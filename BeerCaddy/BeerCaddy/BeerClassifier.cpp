@@ -21,8 +21,8 @@ static CvMat extract_feats(Mat& im)
 
     // TODO: figure out good keypoints to use.
     vector<KeyPoint> keypoints = {
-        KeyPoint(100, 100, 20),
-        KeyPoint(100, 200, 20)
+        {100, 100, 20},
+        {100, 200, 20}
     };
 
 	Mat descriptors;
