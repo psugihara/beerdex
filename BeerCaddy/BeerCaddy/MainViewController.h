@@ -7,7 +7,10 @@
 //
 
 #import "FlipsideViewController.h"
+#import "BeerClassifier.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+    BeerClassifier bottler;
+}
 
 @end

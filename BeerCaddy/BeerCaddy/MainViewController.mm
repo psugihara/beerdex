@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-
+    
 @end
 
 @implementation MainViewController
@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    bottler.load("/path/to/saved/svm/");
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -101,8 +102,10 @@
             imageToSave = originalImage;
         }
 
-        [self cvMatFromUIImage:]
-
+        // Reformat image and classify.
+        CvMat img = [self cvMatFromUIImage:imageToSave];
+        int label = bottler.label(&img);
+        NSLog(@"%d", label);
     }
 
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];

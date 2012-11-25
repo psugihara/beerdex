@@ -140,8 +140,8 @@
 				A1919C481661931700205609 /* MainViewController.mm */,
 				A1919C2116615FBE00205609 /* FlipsideViewController.h */,
 				A1919C2216615FBE00205609 /* FlipsideViewController.m */,
-				A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */,
 				A1919C4C1661AB0D00205609 /* BeerClassifier.h */,
+				A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */,
 				A1919C0A16615FBE00205609 /* Supporting Files */,
 			);
 			path = BeerCaddy;
@@ -485,6 +485,7 @@
 				A1919C3D16615FBE00205609 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A1919C3E16615FBE00205609 /* Build configuration list for PBXNativeTarget "BeerCaddyTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +494,7 @@
 				A1919C4016615FBE00205609 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
