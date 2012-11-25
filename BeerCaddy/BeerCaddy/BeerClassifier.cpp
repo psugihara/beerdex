@@ -12,7 +12,8 @@ using namespace std;
 
 BeerClassifier::BeerClassifier(const string &path)
 {
-    
+    svm = new CvSVM();
+    svm->load(path.c_str());
 }
 
 void BeerClassifier::train(CvMat *samples, CvMat *labels)
@@ -22,5 +23,7 @@ void BeerClassifier::train(CvMat *samples, CvMat *labels)
 
 int BeerClassifier::classify(CvMat *sample)
 {
-    
+    int label = -1;
+
+    return label;
 }
