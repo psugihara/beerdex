@@ -12,7 +12,7 @@
 using namespace std;
 using namespace cv;
 
-#define FRAMES 1
+#define FRAMES 2
 
 
 static CvMat extract_feats(Mat& im)
@@ -29,7 +29,7 @@ static CvMat extract_feats(Mat& im)
 
 	extractor.compute(im, keypoints, descriptors);
 
-    return descriptors.reshape(1, FRAMES * 128);;
+    return descriptors.reshape(1, FRAMES * 128);
 }
 
 
