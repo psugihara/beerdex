@@ -7,15 +7,11 @@
 //
 
 #include "BeerClassifier.h"
-#include <opencv2/nonfree/features2d.hpp>
-
-using namespace std;
-using namespace cv;
 
 #define FRAMES 2
 
 
-static CvMat extract_feats(Mat& im)
+static Mat extract_feats(Mat& im)
 {
 	SurfDescriptorExtractor extractor;
 
@@ -38,15 +34,33 @@ void BeerClassifier::load(const char *path)
     svm_.load(path);
 }
 
-void BeerClassifier::train(CvMat *feats, CvMat *labels, int count)
+void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 {
+
+	vector<Mat>::iterator it;
+
+	Mat dest(train_imgs.size(), FRAMES * 128, CV_32FC1);
+
+	int i = 1;
+
+	for ( it = train_imgs.begin() ; it < train_imgs.end(); it++ ) {
+		
+		Mat descriptors = extract_feats(*it);
+
+		descriptors.copyTo(dest.row(i));
+
+		i++;
+	}
+
+	CvMat feats = dest;
+
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
     params.kernel_type = CvSVM::LINEAR;
     params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 100, 1e-6);
 
-    svm_.train(feats, labels, Mat(), Mat(), params);
+    svm_.train_auto(&feats, labels, Mat(), Mat(), params);
 }
 
 int BeerClassifier::label(Mat &sample_image)

@@ -10,6 +10,7 @@
 #include <highgui.h>
 #include <stdio.h>
 #include <iostream>
+#include <vector>
 #include <opencv2/nonfree/features2d.hpp>
 #include "opencv2/core/core.hpp"
 #include "opencv2/features2d/features2d.hpp"
@@ -17,10 +18,8 @@
 
 #include "BeerClassifier.h"
 
+#define FRAMES 2
 
-#FRAMES 2
-
-#include "beer.h"
 
 using namespace std;
 using namespace cv;
@@ -40,13 +39,26 @@ int main (int argc, char *argv[])
 	Mat im_2 = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
 	Mat im_3 = imread( argv[3], CV_LOAD_IMAGE_GRAYSCALE );
 	Mat im_4 = imread( argv[4], CV_LOAD_IMAGE_GRAYSCALE );
+
+
+	vector<Mat> images;
+
+	images.push_back(im_1);
+	images.push_back(im_2);
+	images.push_back(im_3);
+	images.push_back(im_4);
+
+
+	/*
 	
-	Mat descriptors_1 = classifier.extractFeatures(im_1);
-	Mat descriptors_2 = classifier.extractFeatures(im_2);
-	Mat descriptors_3 = classifier.extractFeatures(im_3);
-	Mat descriptors_4 = classifier.extractFeatures(im_4);
+	CvMat descriptors_1 = classifier.extract_feats(im_1);
+	CvMat descriptors_2 = classifier.extract_feats(im_2);
+	CvMat descriptors_3 = classifier.extract_feats(im_3);
+	CvMat descriptors_4 = classifier.extract_feats(im_4);
 
 	Mat dest(4, FRAMES * 128);
+
+	CvMat = dest;
 
 	descriptors_1.copyTo(dest.row(1));
 	descriptors_2.copyTo(dest.row(2));
@@ -57,13 +69,27 @@ int main (int argc, char *argv[])
 
 	Mat labels(4, 1, CV_32FC1);
 
-	labels.at(1,1) = "heineken";
-	labels.at(2,1) = "stella";
-	labels.at(3,1) = "bud";
-	labels.at(4,1) = "corona";
+	labels.at(1,1) = 1;
+	labels.at(2,1) = 2;
+	labels.at(3,1) = 3;
+	labels.at(4,1) = 4;
 
-	classifier.train(&feats, &labels, 0)
-	classifier.("bottles.model");
+	CvMat cv_labels = labels;
+	 
+	*/
+
+	Mat labels(4, 1, CV_16UC1);
+	
+	labels.at<int>(1,1) = 1;
+	labels.at<int>(2,1) = 2;
+	labels.at<int>(3,1) = 3;
+	labels.at<int>(4,1) = 4;
+
+	
+
+	classifier.train(images, labels);
+	classifier.save("bottles.model");
+	 
 
 	return 0;
 }

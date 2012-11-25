@@ -10,6 +10,12 @@
 #define __BeerCaddy__BeerClassifier__
 
 #include <iostream>
+#include <vector>
+
+#include <opencv2/nonfree/features2d.hpp>
+
+using namespace std;
+using namespace cv;
 
 class BeerClassifier {
     CvSVM svm_;
@@ -17,7 +23,7 @@ class BeerClassifier {
 public:
     void load(const char *path);
     void save(const char *path);
-    void train(CvMat *samples, CvMat *labels, int count);
+    void train(vector<Mat> &train_imgs, Mat &labels);
     int label(cv::Mat &sample);
 };
 
