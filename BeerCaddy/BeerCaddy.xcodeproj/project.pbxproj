@@ -23,10 +23,10 @@
 		A1919C2D16615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
 		A1919C3516615FBE00205609 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1919C3316615FBE00205609 /* InfoPlist.strings */; };
 		A1919C3816615FBE00205609 /* BeerCaddyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1919C3716615FBE00205609 /* BeerCaddyTests.m */; };
-		A1919C451661615C00205609 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C441661615C00205609 /* opencv2.framework */; };
 		A1919C47166176B300205609 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C46166176B300205609 /* MobileCoreServices.framework */; };
 		A1919C491661931700205609 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1919C481661931700205609 /* MainViewController.mm */; };
 		A1919C4D1661AB0D00205609 /* BeerClassifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */; };
+		A1BD4B601661DAD1002B2A1D /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BD4B5F1661DAD1002B2A1D /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,12 +63,11 @@
 		A1919C3416615FBE00205609 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1919C3616615FBE00205609 /* BeerCaddyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeerCaddyTests.h; sourceTree = "<group>"; };
 		A1919C3716615FBE00205609 /* BeerCaddyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeerCaddyTests.m; sourceTree = "<group>"; };
-		A1919C41166160D900205609 /* opencv2 */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = opencv2; path = ../../../../Downloads/opencv2.framework/Versions/A/opencv2; sourceTree = "<group>"; };
-		A1919C441661615C00205609 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../Downloads/opencv2.framework; sourceTree = "<group>"; };
 		A1919C46166176B300205609 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1919C481661931700205609 /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
 		A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeerClassifier.cpp; sourceTree = "<group>"; };
 		A1919C4C1661AB0D00205609 /* BeerClassifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeerClassifier.h; sourceTree = "<group>"; };
+		A1BD4B5F1661DAD1002B2A1D /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,11 +75,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1BD4B601661DAD1002B2A1D /* opencv2.framework in Frameworks */,
 				A1919C47166176B300205609 /* MobileCoreServices.framework in Frameworks */,
 				A1919C0416615FBE00205609 /* UIKit.framework in Frameworks */,
 				A1919C0616615FBE00205609 /* Foundation.framework in Frameworks */,
 				A1919C0816615FBE00205609 /* CoreGraphics.framework in Frameworks */,
-				A1919C451661615C00205609 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,9 +99,8 @@
 		A1919BF416615FBE00205609 = {
 			isa = PBXGroup;
 			children = (
+				A1BD4B5F1661DAD1002B2A1D /* opencv2.framework */,
 				A1919C46166176B300205609 /* MobileCoreServices.framework */,
-				A1919C441661615C00205609 /* opencv2.framework */,
-				A1919C41166160D900205609 /* opencv2 */,
 				A1919C0916615FBE00205609 /* BeerCaddy */,
 				A1919C3016615FBE00205609 /* BeerCaddyTests */,
 				A1919C0216615FBE00205609 /* Frameworks */,
@@ -400,6 +398,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Downloads\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
@@ -419,6 +418,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Downloads\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";

@@ -11,15 +11,21 @@
 using namespace std;
 using namespace cv;
 
-#define FRAMES 10
+#define FRAMES 1
 
 
-static CvMat extract_feats(Mat& im, vector<KeyPoint>& keypoints)
+static CvMat extract_feats(Mat& im)
 {
 	Ptr<DescriptorExtractor> extractor = DescriptorExtractor::create("SURF");
 
 	Mat descriptors;
-    
+
+    // TODO: figure out good keypoints to use.
+    vector<KeyPoint> keypoints = { KeyPoint(Point2f(100, 100), 10) };
+
+    cout << "im.size = " << im.size() << endl;
+    cout << "keypoints.size = " << keypoints.size() << endl;
+
 	extractor->compute(im, keypoints, descriptors);
 
     descriptors = descriptors.reshape(1, FRAMES * 128);
@@ -48,8 +54,10 @@ int BeerClassifier::label(CvMat *sample_image)
 {
     int label = -1;
 
-    vector<KeyPoint> keypoints;
-    CvMat feats = extract_feats((Mat &) *sample_image, keypoints);
+    Mat m = sample_image;
+    cout << "m size = "<< endl << " "  << m.size() << endl << endl;
+
+    CvMat feats = extract_feats(m);
 
     label = svm_.predict(&feats);
 
