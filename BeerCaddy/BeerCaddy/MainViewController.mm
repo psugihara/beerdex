@@ -72,6 +72,10 @@
 
     cameraUI.delegate = delegate;
 
+    UIImageView *bottleOverlay = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay.png"]];
+    bottleOverlay.frame = CGRectMake(0, 0, bottleOverlay.image.size.width, bottleOverlay.image.size.height);
+    cameraUI.cameraOverlayView = bottleOverlay;
+
     [controller presentViewController:cameraUI animated:YES completion:nil];
     return YES;
 }

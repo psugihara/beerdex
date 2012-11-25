@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A160DD8D166209F30076080F /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A160DD8C166209F30076080F /* overlay@2x.png */; };
 		A1919C0416615FBE00205609 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0316615FBE00205609 /* UIKit.framework */; };
 		A1919C0616615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
 		A1919C0816615FBE00205609 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0716615FBE00205609 /* CoreGraphics.framework */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A160DD8C166209F30076080F /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
 		A1657DA41661DE7E009878CA /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		A1919BFF16615FBE00205609 /* BeerCaddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCaddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1919C0316615FBE00205609 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -148,6 +150,7 @@
 		A1919C0A16615FBE00205609 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A160DD8C166209F30076080F /* overlay@2x.png */,
 				A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */,
 				A1919C0C16615FBE00205609 /* InfoPlist.strings */,
 				A1919C0F16615FBE00205609 /* main.m */,
@@ -254,6 +257,7 @@
 				A1919C1816615FBE00205609 /* Default@2x.png in Resources */,
 				A1919C1A16615FBE00205609 /* Default-568h@2x.png in Resources */,
 				A1919C1D16615FBE00205609 /* MainStoryboard.storyboard in Resources */,
+				A160DD8D166209F30076080F /* overlay@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

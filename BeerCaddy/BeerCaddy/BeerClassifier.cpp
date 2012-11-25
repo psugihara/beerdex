@@ -24,15 +24,11 @@ static CvMat extract_feats(Mat& im)
     KeyPoint k(100, 100, 20);
     keypoints.push_back(k);
 
-    cout << "im.size = " << im.size() << endl;
-    cout << "keypoints.size = " << keypoints.size() << endl;
-    cout << "m.at<float>(0, 0)" << endl << im.at<int>(1, 1) << endl;
-
 	Mat descriptors;
 
 	extractor.compute(im, keypoints, descriptors);
 
-//    descriptors = descriptors.reshape(1, FRAMES * 128);
+    descriptors = descriptors.reshape(1, FRAMES * 128);
 
 	return descriptors;
 }
