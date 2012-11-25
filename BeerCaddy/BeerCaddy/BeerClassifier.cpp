@@ -20,17 +20,16 @@ static CvMat extract_feats(Mat& im)
 	SurfDescriptorExtractor extractor;
 
     // TODO: figure out good keypoints to use.
-    vector<KeyPoint> keypoints;
-    KeyPoint k(100, 100, 20);
-    keypoints.push_back(k);
+    vector<KeyPoint> keypoints = {
+        KeyPoint(100, 100, 20),
+        KeyPoint(100, 200, 20)
+    };
 
 	Mat descriptors;
 
 	extractor.compute(im, keypoints, descriptors);
 
-    descriptors = descriptors.reshape(1, FRAMES * 128);
-
-	return descriptors;
+    return descriptors.reshape(1, FRAMES * 128);;
 }
 
 
