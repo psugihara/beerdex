@@ -18,7 +18,7 @@ public:
     void load(const char *path);
     void save(const char *path);
     void train(CvMat *samples, CvMat *labels, int count);
-    int label(CvMat *sample);
+    int label(cv::Mat *sample);
 };
 
 #endif /* defined(__BeerCaddy__BeerClassifier__) */

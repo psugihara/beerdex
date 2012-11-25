@@ -103,7 +103,7 @@
         }
 
         // Reformat image and classify.
-        CvMat img = [self cvMatFromUIImage:imageToSave];
+        cv::Mat img = [self cvMatFromUIImage:imageToSave];
         int label = bottler.label(&img);
         NSLog(@"%d", label);
     }
@@ -131,8 +131,7 @@
     CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
     CGContextRelease(contextRef);
     CGColorSpaceRelease(colorSpace);
-
-    NSLog(@"%d", cvMat.size().width);
+    
     return cvMat;
 }
 

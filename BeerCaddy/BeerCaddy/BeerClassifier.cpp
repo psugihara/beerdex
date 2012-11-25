@@ -50,14 +50,11 @@ void BeerClassifier::train(CvMat *feats, CvMat *labels, int count)
     svm_.train(feats, labels, Mat(), Mat(), params);
 }
 
-int BeerClassifier::label(CvMat *sample_image)
+int BeerClassifier::label(Mat *sample_image)
 {
     int label = -1;
 
-    Mat m = sample_image;
-    cout << "m size = "<< endl << " "  << m.size() << endl << endl;
-
-    CvMat feats = extract_feats(m);
+    CvMat feats = extract_feats(*sample_image);
 
     label = svm_.predict(&feats);
 
