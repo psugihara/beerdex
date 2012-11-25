@@ -24,9 +24,10 @@
     [super tearDown];
 }
 
-- (void)testExample
+
+- (void)extractFeats
 {
-    STFail(@"Unit tests are not implemented yet in BeerCaddyTests");
+    UIImage *img = [UIImage imageWithContentsOfFile:@"test.jpg"];
 }
 
 @end

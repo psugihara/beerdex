@@ -7,6 +7,7 @@
 //
 
 #include "BeerClassifier.h"
+#include <opencv2/nonfree/features2d.hpp>
 
 using namespace std;
 using namespace cv;
@@ -16,20 +17,23 @@ using namespace cv;
 
 static CvMat extract_feats(Mat& im)
 {
-	Ptr<DescriptorExtractor> extractor = DescriptorExtractor::create("SURF");
-
-	Mat descriptors;
+	SurfDescriptorExtractor extractor;
 
     // TODO: figure out good keypoints to use.
-    vector<KeyPoint> keypoints = { KeyPoint(Point2f(100, 100), 10) };
+    vector<KeyPoint> keypoints;
+    KeyPoint k(100, 100, 20);
+    keypoints.push_back(k);
 
     cout << "im.size = " << im.size() << endl;
     cout << "keypoints.size = " << keypoints.size() << endl;
+    cout << "m.at<float>(0, 0)" << endl << im.at<int>(1, 1) << endl;
 
-	extractor->compute(im, keypoints, descriptors);
+	Mat descriptors;
 
-    descriptors = descriptors.reshape(1, FRAMES * 128);
-    
+	extractor.compute(im, keypoints, descriptors);
+
+//    descriptors = descriptors.reshape(1, FRAMES * 128);
+
 	return descriptors;
 }
 
@@ -50,15 +54,13 @@ void BeerClassifier::train(CvMat *feats, CvMat *labels, int count)
     svm_.train(feats, labels, Mat(), Mat(), params);
 }
 
-int BeerClassifier::label(Mat *sample_image)
+int BeerClassifier::label(Mat &sample_image)
 {
     int label = -1;
 
-    CvMat feats = extract_feats(*sample_image);
+    CvMat feats = extract_feats(sample_image);
 
     label = svm_.predict(&feats);
-
-    printf("hey from the label function");
 
     return label;
 }

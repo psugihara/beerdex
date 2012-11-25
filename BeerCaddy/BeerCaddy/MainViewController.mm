@@ -17,7 +17,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    // TODO: load svm from included path
     bottler.load("/path/to/saved/svm/");
 }
 
@@ -104,7 +105,7 @@
 
         // Reformat image and classify.
         cv::Mat img = [self cvMatFromUIImage:imageToSave];
-        int label = bottler.label(&img);
+        int label = bottler.label(img);
         NSLog(@"%d", label);
     }
 
