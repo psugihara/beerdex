@@ -15,6 +15,14 @@ using namespace cv;
 
 static Mat extract_feats(Mat& im)
 {
+	cout << "size: " << im.size() << " type: " << im.type() << endl;
+
+	//resizing image
+	Mat dest(540, 360, 16);
+
+	resize(im, dest, dest.size(), 0, 0, INTER_CUBIC);
+
+
 	SurfDescriptorExtractor extractor;
 
     // TODO: figure out good keypoints to use.
@@ -24,7 +32,7 @@ static Mat extract_feats(Mat& im)
 
 	Mat descriptors;
 
-	extractor.compute(im, keypoints, descriptors);
+	extractor.compute(dest, keypoints, descriptors);
 
     return descriptors.reshape(1, 1);
 
