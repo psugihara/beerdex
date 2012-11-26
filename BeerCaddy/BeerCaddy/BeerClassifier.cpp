@@ -19,13 +19,15 @@ static Mat extract_feats(Mat& im)
 
     // TODO: figure out good keypoints to use.
     vector<KeyPoint> keypoints;
-    keypoints.push_back(KeyPoint(100, 100, 20));
+    keypoints.push_back(KeyPoint(180, 330, 20));
+    keypoints.push_back(KeyPoint(180, 300, 20));
 
 	Mat descriptors;
 
 	extractor.compute(im, keypoints, descriptors);
 
-    return descriptors.reshape(1, FRAMES * 128);
+    return descriptors.reshape(1, 1);
+
 }
 
 
@@ -41,12 +43,23 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 
 	Mat dest(train_imgs.size(), FRAMES * 128, CV_32FC1);
 
-	int i = 1;
+	cout << "train1" << endl;
+
+	int i = 0;
 	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+
+		cout << "trainx" << i << endl;
 
 		Mat descriptors = extract_feats(*it);
 
+		cout << "descriptors: " << descriptors.size() << endl;
+		cout << "dest: " << dest.size() << endl;
+
+
 		descriptors.copyTo(dest.row(i));
+
+		cout << "trainy" << i << endl;
+
 
 		i++;
 	}
@@ -59,7 +72,18 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
     params.kernel_type = CvSVM::LINEAR;
     params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 100, 1e-6);
 
-    svm_.train_auto(&feats, labels, Mat(), Mat(), params);
+	cout << "train_end" << endl;
+
+	//cout << "k_fold: " << params.k_fold << endl;
+
+	CvMat cvlbs = labels;
+	CvMat a;
+	CvMat b;
+
+	cout << "feat: " << dest.size() << endl;
+	cout << "cvlbs: " << labels.size() << endl;
+
+    svm_.train_auto(dest, labels, Mat(), Mat(), params, 2);
 }
 
 int BeerClassifier::label(Mat &sample_image)
