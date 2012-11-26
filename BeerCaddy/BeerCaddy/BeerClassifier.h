@@ -12,10 +12,10 @@
 #include <iostream>
 #include <vector>
 
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/ml/ml.hpp>
 #include <opencv2/nonfree/features2d.hpp>
-
-using namespace std;
-using namespace cv;
 
 class BeerClassifier {
     CvSVM svm_;
@@ -23,7 +23,7 @@ class BeerClassifier {
 public:
     void load(const char *path);
     void save(const char *path);
-    void train(vector<Mat> &train_imgs, Mat &labels);
+    void train(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
     int label(cv::Mat &sample);
 };
 

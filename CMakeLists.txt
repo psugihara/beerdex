@@ -1,5 +1,0 @@
-project( beer )
-find_package( OpenCV REQUIRED )
-add_executable( beer beer )
-target_link_libraries( beer ${OpenCV_LIBS} )
-include_directories( BeerCaddy/BeerCaddy )

@@ -10,16 +10,16 @@
 
 #define FRAMES 2
 
+using namespace std;
+using namespace cv;
 
 static Mat extract_feats(Mat& im)
 {
 	SurfDescriptorExtractor extractor;
 
     // TODO: figure out good keypoints to use.
-    vector<KeyPoint> keypoints = {
-        {100, 100, 20},
-        {100, 200, 20}
-    };
+    vector<KeyPoint> keypoints;
+    keypoints.push_back(KeyPoint(100, 100, 20));
 
 	Mat descriptors;
 
@@ -42,9 +42,8 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 	Mat dest(train_imgs.size(), FRAMES * 128, CV_32FC1);
 
 	int i = 1;
+	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
 
-	for ( it = train_imgs.begin() ; it < train_imgs.end(); it++ ) {
-		
 		Mat descriptors = extract_feats(*it);
 
 		descriptors.copyTo(dest.row(i));

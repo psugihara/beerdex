@@ -6,16 +6,18 @@
 //
 //
 
-#include <cv.h>
-#include <highgui.h>
 #include <stdio.h>
 #include <iostream>
-#include <vector>
-#include <opencv2/nonfree/features2d.hpp>
-#include "opencv2/core/core.hpp"
-#include "opencv2/features2d/features2d.hpp"
-#include "opencv2/highgui/highgui.hpp"
 
+#include <vector>
+
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/nonfree/features2d.hpp>
+#include <opencv2/ml/ml.hpp>
+
+
+#include "Beers.h"
 #include "BeerClassifier.h"
 
 #define FRAMES 2
@@ -28,8 +30,8 @@ Mat extractFeatures(Mat im);
 
 int main (int argc, char *argv[])
 {
-	if (argc != 5) {
-		cerr << "usage: beer im1 im2 im3 im4" << endl;
+	if (argc != 3) {
+		cerr << "usage: beer im1 im2" << endl;
 		return -1;
 	}
 
@@ -37,16 +39,16 @@ int main (int argc, char *argv[])
 
 	Mat im_1 = imread( argv[1], CV_LOAD_IMAGE_GRAYSCALE );
 	Mat im_2 = imread( argv[2], CV_LOAD_IMAGE_GRAYSCALE );
-	Mat im_3 = imread( argv[3], CV_LOAD_IMAGE_GRAYSCALE );
-	Mat im_4 = imread( argv[4], CV_LOAD_IMAGE_GRAYSCALE );
+//	Mat im_3 = imread( argv[3], CV_LOAD_IMAGE_GRAYSCALE );
+//	Mat im_4 = imread( argv[4], CV_LOAD_IMAGE_GRAYSCALE );
 
 
 	vector<Mat> images;
 
 	images.push_back(im_1);
 	images.push_back(im_2);
-	images.push_back(im_3);
-	images.push_back(im_4);
+//	images.push_back(im_3);
+//	images.push_back(im_4);
 
 
 	/*
@@ -78,14 +80,10 @@ int main (int argc, char *argv[])
 	 
 	*/
 
-	Mat labels(4, 1, CV_16UC1);
+	Mat labels(2, 1, CV_16UC1);
 	
-	labels.at<int>(1,1) = 1;
-	labels.at<int>(2,1) = 2;
-	labels.at<int>(3,1) = 3;
-	labels.at<int>(4,1) = 4;
-
-	
+	labels.at<int>(1,1) = CORONA;
+	labels.at<int>(2,1) = BUD;
 
 	classifier.train(images, labels);
 	classifier.save("bottles.model");

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A160DD8D166209F30076080F /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A160DD8C166209F30076080F /* overlay@2x.png */; };
 		A1919C0416615FBE00205609 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0316615FBE00205609 /* UIKit.framework */; };
 		A1919C0616615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
 		A1919C0816615FBE00205609 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0716615FBE00205609 /* CoreGraphics.framework */; };
@@ -28,6 +27,7 @@
 		A1919C4D1661AB0D00205609 /* BeerClassifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */; };
 		A1B57E741661E21E00E891EB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C46166176B300205609 /* MobileCoreServices.framework */; };
 		A1B57E751661E27B00E891EB /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1657DA41661DE7E009878CA /* opencv2.framework */; };
+		A1C938A21662AEE70086660D /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C938A11662AEE70086660D /* overlay@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A160DD8C166209F30076080F /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
+		A13C810A1662C75200624C82 /* Beers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Beers.h; sourceTree = "<group>"; };
 		A1657DA41661DE7E009878CA /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		A1919BFF16615FBE00205609 /* BeerCaddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCaddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1919C0316615FBE00205609 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -70,6 +70,7 @@
 		A1919C481661931700205609 /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
 		A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeerClassifier.cpp; sourceTree = "<group>"; };
 		A1919C4C1661AB0D00205609 /* BeerClassifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeerClassifier.h; sourceTree = "<group>"; };
+		A1C938A11662AEE70086660D /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +143,7 @@
 				A1919C2216615FBE00205609 /* FlipsideViewController.m */,
 				A1919C4C1661AB0D00205609 /* BeerClassifier.h */,
 				A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */,
+				A13C810A1662C75200624C82 /* Beers.h */,
 				A1919C0A16615FBE00205609 /* Supporting Files */,
 			);
 			path = BeerCaddy;
@@ -150,11 +152,11 @@
 		A1919C0A16615FBE00205609 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A160DD8C166209F30076080F /* overlay@2x.png */,
 				A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */,
 				A1919C0C16615FBE00205609 /* InfoPlist.strings */,
 				A1919C0F16615FBE00205609 /* main.m */,
 				A1919C1116615FBE00205609 /* BeerCaddy-Prefix.pch */,
+				A1C938A11662AEE70086660D /* overlay@2x.png */,
 				A1919C1516615FBE00205609 /* Default.png */,
 				A1919C1716615FBE00205609 /* Default@2x.png */,
 				A1919C1916615FBE00205609 /* Default-568h@2x.png */,
@@ -257,7 +259,7 @@
 				A1919C1816615FBE00205609 /* Default@2x.png in Resources */,
 				A1919C1A16615FBE00205609 /* Default-568h@2x.png in Resources */,
 				A1919C1D16615FBE00205609 /* MainStoryboard.storyboard in Resources */,
-				A160DD8D166209F30076080F /* overlay@2x.png in Resources */,
+				A1C938A21662AEE70086660D /* overlay@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
