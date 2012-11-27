@@ -60,6 +60,7 @@ int read_images(char *root, vector<Mat> &images, vector<float> &labels)
 	vector<path>::const_iterator it;
 
 	int num = 0;
+	int count = 0;
 
 	for (it = vec.begin(); it != vec.end(); ++it)
 	{
@@ -84,12 +85,16 @@ int read_images(char *root, vector<Mat> &images, vector<float> &labels)
 			images.push_back(im);
 			labels.push_back(num);
 
+			count++;
+
 
 		}
 
 		num++;
 
 	}
+
+	cout << "count: " << count << endl;
 
 	return num;
 
@@ -152,6 +157,8 @@ int main (int argc, char *argv[])
 
 	int nr_class = read_images(argv[1],images,labels);
 
+	cout << "nr_class: " << nr_class << endl;
+
 	float lbs[labels.size()];
 
 	vector<float>::const_iterator it;
@@ -159,6 +166,9 @@ int main (int argc, char *argv[])
 	for (it = labels.begin(); it != labels.end(); ++it)
 	{
 		lbs[num] = *it;
+
+		cout << "label " << *it << endl;
+
 		num++;
 	}
 	
@@ -168,7 +178,7 @@ int main (int argc, char *argv[])
 
 	classifier.train(images,cv_labels);
 
-	classifier.save("bottles_all.model");
+	classifier.save("bottles3.model");
 
 	return 0;
 }

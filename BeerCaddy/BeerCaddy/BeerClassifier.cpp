@@ -8,7 +8,7 @@
 
 #include "BeerClassifier.h"
 
-#define FRAMES 2
+#define FRAMES 18
 
 using namespace std;
 using namespace cv;
@@ -17,16 +17,45 @@ static Mat extract_feats(Mat& im)
 {
 
 	//resizing image
-	Mat dest(540, 360, 16);
+	Mat dest(540, 360, im.type());
 
 	resize(im, dest, dest.size(), 0, 0, INTER_CUBIC);
+
+	//namedWindow( "Display Image", CV_WINDOW_AUTOSIZE );
+	//imshow( "Display Image", dest );
+
+	//while (1);
 
 	SurfDescriptorExtractor extractor;
 
     // TODO: figure out good keypoints to use.
     vector<KeyPoint> keypoints;
-    keypoints.push_back(KeyPoint(180, 330, 20));
-    keypoints.push_back(KeyPoint(180, 300, 20));
+    keypoints.push_back(KeyPoint(180, 330, 32));
+    keypoints.push_back(KeyPoint(180, 300, 64));
+
+    keypoints.push_back(KeyPoint(180, 300, 32));
+    keypoints.push_back(KeyPoint(180, 300, 64));
+
+    keypoints.push_back(KeyPoint(180, 170, 32));
+    keypoints.push_back(KeyPoint(180, 170, 64));
+
+    keypoints.push_back(KeyPoint(145, 300, 32));
+	keypoints.push_back(KeyPoint(145, 300, 64));
+
+    keypoints.push_back(KeyPoint(145, 330, 32));
+    keypoints.push_back(KeyPoint(145, 330, 64));
+
+    keypoints.push_back(KeyPoint(145, 300, 32));
+    keypoints.push_back(KeyPoint(145, 300, 64));
+
+	keypoints.push_back(KeyPoint(210, 330, 32));
+	keypoints.push_back(KeyPoint(210, 330, 64));
+
+	keypoints.push_back(KeyPoint(180, 400, 32));
+	keypoints.push_back(KeyPoint(180, 400, 64));
+
+	keypoints.push_back(KeyPoint(180, 230, 32));
+	keypoints.push_back(KeyPoint(180, 230, 64));
 
 	Mat descriptors;
 
