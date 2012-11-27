@@ -15,13 +15,11 @@ using namespace cv;
 
 static Mat extract_feats(Mat& im)
 {
-	cout << "size: " << im.size() << " type: " << im.type() << endl;
 
 	//resizing image
 	Mat dest(540, 360, 16);
 
 	resize(im, dest, dest.size(), 0, 0, INTER_CUBIC);
-
 
 	SurfDescriptorExtractor extractor;
 
@@ -72,8 +70,6 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 		i++;
 	}
 
-	CvMat feats = dest;
-
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
@@ -84,19 +80,15 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 
 	//cout << "k_fold: " << params.k_fold << endl;
 
-	CvMat cvlbs = labels;
-	CvMat a;
-	CvMat b;
-
 	cout << "feat: " << dest.size() << endl;
 	cout << "cvlbs: " << labels.size() << endl;
 
-    svm_.train_auto(dest, labels, Mat(), Mat(), params, 2);
+    svm_.train_auto(dest, labels, Mat(), Mat(), params, 3);
 }
 
 int BeerClassifier::label(Mat &sample_image)
 {
-    int label = -1;
+    int label = -2;
 
     CvMat feats = extract_feats(sample_image);
 

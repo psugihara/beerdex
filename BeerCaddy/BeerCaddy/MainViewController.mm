@@ -19,7 +19,7 @@
     [super viewDidLoad];
 
     // TODO: load svm from included path
-    bottler.load("bottles.model");
+    bottler.load("bottles_all.model");
 }
 
 - (void)viewDidAppear:(BOOL)animated
