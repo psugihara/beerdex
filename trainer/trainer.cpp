@@ -95,55 +95,10 @@ int read_images(char *root, vector<Mat> &images, vector<float> &labels)
 
 }
 
-
-/*
-int main (int argc, char *argv[])
-{
-	if (argc != 7) {
-		cerr << "usage: beer im1 im2 im3 im4 im5 im6" << endl;
-		return -1;
-	}
-
-	BeerClassifier classifier;
-
-	Mat im_1 = imread( argv[1], CV_LOAD_IMAGE_COLOR );
-	Mat im_2 = imread( argv[2], CV_LOAD_IMAGE_COLOR );
-	Mat im_3 = imread( argv[3], CV_LOAD_IMAGE_COLOR );
-	Mat im_4 = imread( argv[4], CV_LOAD_IMAGE_COLOR );
-	Mat im_5 = imread( argv[5], CV_LOAD_IMAGE_COLOR );
-	Mat im_6 = imread( argv[6], CV_LOAD_IMAGE_COLOR );
-
-
-	vector<Mat> images;
-
-	images.push_back(im_1);
-	images.push_back(im_2);
-	images.push_back(im_3);
-	images.push_back(im_4);
-	images.push_back(im_5);
-	images.push_back(im_6);
-
-
-    float lb[6] = {1.0, 1.0, 2.0, 2.0, 3.0, 3.0};
-    Mat labels(6, 1, CV_32FC1, lb);
-
-
-	classifier.train(images, labels);
-
-
-	cout << "save" << endl;
-
-	classifier.save("bottles.model");
-	
-	return 0;
-}
-
-*/
-
 int main (int argc, char *argv[])
 {
 	if (argc != 2) {
-		cerr << "usage: trainer root" << endl;
+		cerr << "usage: trainer <image-root>" << endl;
 		return -1;
 	}
 
@@ -156,8 +111,7 @@ int main (int argc, char *argv[])
 
 	vector<float>::const_iterator it;
 	int num = 0;
-	for (it = labels.begin(); it != labels.end(); ++it)
-	{
+	for (it = labels.begin(); it != labels.end(); ++it) {
 		lbs[num] = *it;
 		num++;
 	}

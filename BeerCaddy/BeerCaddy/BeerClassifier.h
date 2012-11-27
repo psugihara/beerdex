@@ -26,6 +26,7 @@ public:
     void save(const char *path);
     void train(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
     int label(cv::Mat &sample);
+    float cross_validate(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
 };
 
 #endif /* defined(__BeerCaddy__BeerClassifier__) */
