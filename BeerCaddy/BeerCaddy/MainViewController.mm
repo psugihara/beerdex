@@ -18,8 +18,9 @@
 {
     [super viewDidLoad];
 
+    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"bottles_all" ofType:@"model"];
     // TODO: load svm from included path
-    bottler.load("bottles_all.model");
+    bottler.load([filePath UTF8String]);
 }
 
 - (void)viewDidAppear:(BOOL)animated
