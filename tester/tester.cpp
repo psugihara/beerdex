@@ -60,7 +60,8 @@ int main (int argc, char *argv[])
 
 	BeerClassifier classifier;
 
-	classifier.load("../trainer/build/bottles3.model");
+    
+	classifier.load("../../trainer/build/bottles.model");
 
 	Mat im = imread( argv[1], CV_LOAD_IMAGE_COLOR );
 

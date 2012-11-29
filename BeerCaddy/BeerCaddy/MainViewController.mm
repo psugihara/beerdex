@@ -18,8 +18,8 @@
 {
     [super viewDidLoad];
 
-    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"bottles_all" ofType:@"model"];
-    // TODO: load svm from included path
+    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"bottles_88"
+                                                                          ofType:@"model"];
     bottler.load([filePath UTF8String]);
 }
 
@@ -111,7 +111,19 @@
         // Reformat image and classify.
         cv::Mat img = [self cvMatFromUIImage:imageToSave];
         int label = bottler.label(img);
-        NSLog(@"%d", label);
+
+        NSArray *beers = @[@"bud_light", @"budweiser", @"coors_light", @"corona",
+                   @"heineken", @"magic_hat", @"rolling_rock", @"sierra_nevada",
+                   @"stella_artois", @"yuengling"];
+
+        NSString *message = [NSString stringWithFormat:@"I think that's a %@ bottle?", beers[label]];
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Prediction!"
+                                                        message:message
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }
 
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];

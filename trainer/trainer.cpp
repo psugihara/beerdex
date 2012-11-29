@@ -31,15 +31,11 @@ using namespace boost::filesystem;
 
 bool isHidden(const path &p)
 {
-    //path::string_type name = p.filename();
-
-
 	string name = boost::filesystem::basename(p);
 	
     if(name != ".." &&
        name != "."  &&
-       (name[0] == '.' || name == ""))
-    {
+       (name[0] == '.' || name == "")) {
 		return true;
     }
 
@@ -62,8 +58,7 @@ int read_images(char *root, vector<Mat> &images, vector<float> &labels)
 	int num = 0;
 	int count = 0;
 
-	for (it = vec.begin(); it != vec.end(); ++it)
-	{
+	for (it = vec.begin(); it != vec.end(); ++it) {
 		if (isHidden(*it) || !is_directory(*it))
 			continue;
 
@@ -75,8 +70,7 @@ int read_images(char *root, vector<Mat> &images, vector<float> &labels)
 
 		vector<path>::const_iterator it2;
 
-		for (it2 = vec2.begin(); it2 != vec2.end(); ++it2)
-		{
+		for (it2 = vec2.begin(); it2 != vec2.end(); ++it2) {
 			if (isHidden(*it2))
 				continue;
 
@@ -132,7 +126,7 @@ int main (int argc, char *argv[])
 
 	classifier.train(images,cv_labels);
 
-	classifier.save("bottles_88.model");
+	classifier.save("bottles.model");
 
 	return 0;
 }

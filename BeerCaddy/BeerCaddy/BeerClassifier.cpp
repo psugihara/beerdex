@@ -20,51 +20,18 @@ static Mat extract_feats(Mat& im)
 
 	resize(im, dest, dest.size(), 0, 0, INTER_CUBIC);
 
-
-
-
 	SiftDescriptorExtractor extractor;
 
-
-    // TODO: figure out good keypoints to use.
     vector<KeyPoint> keypoints;
     keypoints.push_back(KeyPoint(180, 330, 32));
     keypoints.push_back(KeyPoint(180, 330, 16));
-    //keypoints.push_back(KeyPoint(180, 300, 64));
-
     keypoints.push_back(KeyPoint(180, 300, 32));
-    //keypoints.push_back(KeyPoint(180, 300, 64));
-
     keypoints.push_back(KeyPoint(180, 170, 32));
-    //keypoints.push_back(KeyPoint(180, 170, 64));
-
 	keypoints.push_back(KeyPoint(150, 300, 16));
-//	keypoints.push_back(KeyPoint(145, 300, 64));
-//
     keypoints.push_back(KeyPoint(150, 330, 16));
-//    keypoints.push_back(KeyPoint(145, 330, 64));
-
 	keypoints.push_back(KeyPoint(210, 300, 16));
-
 	keypoints.push_back(KeyPoint(210, 330, 16));
 
-
-
-
-
-//
-//    keypoints.push_back(KeyPoint(180, 230, 16));
-//    keypoints.push_back(KeyPoint(145, 300, 64));
-//
-//	keypoints.push_back(KeyPoint(210, 330, 32));
-//	keypoints.push_back(KeyPoint(210, 330, 64));
-//
-//	keypoints.push_back(KeyPoint(180, 400, 32));
-//	keypoints.push_back(KeyPoint(180, 400, 64));
-//
-//	keypoints.push_back(KeyPoint(180, 230, 32));
-//	keypoints.push_back(KeyPoint(180, 230, 64));
-//
 	Mat descriptors;
 
 	extractor.compute(dest, keypoints, descriptors);
@@ -92,28 +59,22 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
-    params.kernel_type = CvSVM::LINEAR;
-    params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 100, 1e-6);
+    params.kernel_type = CvSVM::RBF;
+//    params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 1000, 1e-6);
 
-    svm_.train_auto(dest, labels, Mat(), Mat(), params, 24);
+    svm_.train_auto(dest, labels, Mat(), Mat(), params, 10);
 }
 
 int BeerClassifier::label(Mat &sample_image)
 {
-    int label = -2;
-
     CvMat feats = extract_feats(sample_image);
-
-    label = svm_.predict(&feats);
-
-    return label;
+    return svm_.predict(&feats);;
 }
 
 float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 {
     vector<Mat> imgs;
     Mat train_labels(labels.size().height - 1, 1, CV_32FC1);
-
 
     float correct = 0;
     
@@ -124,7 +85,7 @@ float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 		cout << i << endl;
 		
         int skipped = 0;
-        for (int j = 0; j < labels.size().height; j++) {
+        for (int j = 1; j == labels.size().height; j++) {
             if (i == j) {
                 skipped = 1;
 				continue;
@@ -135,16 +96,10 @@ float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 
         }
 
-
         train(imgs, train_labels);
-
-
 
         if (label(train_imgs[i]) == labels.at<float>(i, 0))
             correct++;
-
-
-
     }
 
     return correct / train_imgs.size();
