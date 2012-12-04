@@ -42,7 +42,7 @@ bool isHidden(const path &p)
     return false;
 }
 
-int read_images(char *root, vector<Mat> &images, vector<float> &labels)
+int read_images(char *root, vector<Mat> &images, vector<int> &labels)
 {
 	path p(root);
 
@@ -80,18 +80,13 @@ int read_images(char *root, vector<Mat> &images, vector<float> &labels)
 			labels.push_back(num);
 
 			count++;
-
-
 		}
 
 		num++;
 
 	}
 
-	cout << "count: " << count << endl;
-
 	return num;
-
 }
 
 int main (int argc, char *argv[])
@@ -102,29 +97,18 @@ int main (int argc, char *argv[])
 	}
 
 	vector<Mat> images;
-	vector<float> labels;
+	vector<int> labels;
 
-	int nr_class = read_images(argv[1],images,labels);
+	int nr_class = read_images(argv[1], images, labels);
 
+    cout << "count: " << labels.size() << endl;
 	cout << "nr_class: " << nr_class << endl;
-
-	float lbs[labels.size()];
-
-	vector<float>::const_iterator it;
-	int num = 0;
-	for (it = labels.begin(); it != labels.end(); ++it) {
-		lbs[num] = *it;
-
-		cout << "label " << *it << endl;
-
-		num++;
-	}
 	
-    Mat cv_labels(labels.size(), 1, CV_32FC1, lbs);
+    Mat cv_labels(labels.size(), 1, CV_32SC1, &labels[0]);
 
 	BeerClassifier classifier;
 
-	classifier.train(images,cv_labels);
+	cout << classifier.cross_validate(images, cv_labels) << endl;
 
 	classifier.save("bottles.model");
 

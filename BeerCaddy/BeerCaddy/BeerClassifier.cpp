@@ -27,21 +27,20 @@ static Mat extract_feats(Mat& im)
     keypoints.push_back(KeyPoint(180, 330, 16));
     keypoints.push_back(KeyPoint(180, 300, 32));
     keypoints.push_back(KeyPoint(180, 170, 32));
-	keypoints.push_back(KeyPoint(150, 300, 16));
+    keypoints.push_back(KeyPoint(150, 300, 16));
     keypoints.push_back(KeyPoint(150, 330, 16));
-	keypoints.push_back(KeyPoint(210, 300, 16));
-	keypoints.push_back(KeyPoint(210, 330, 16));
+    keypoints.push_back(KeyPoint(210, 300, 16));
+    keypoints.push_back(KeyPoint(210, 330, 16));
 
-	Mat descriptors;
+    Mat descriptors;
 
-	extractor.compute(dest, keypoints, descriptors);
+    extractor.compute(dest, keypoints, descriptors);
 
     return descriptors.reshape(1, 1);
 }
 
 void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 {
-
 	vector<Mat>::iterator it;
 
 	Mat dest(train_imgs.size(), FRAMES * 128, CV_32FC1);
@@ -59,10 +58,10 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
-    params.kernel_type = CvSVM::RBF;
-//    params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 1000, 1e-6);
+    params.kernel_type = CvSVM::LINEAR;
+    params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 100, 1e-6);
 
-    svm_.train_auto(dest, labels, Mat(), Mat(), params, 10);
+    svm_.train_auto(dest, labels, Mat(), Mat(), params, 24);
 }
 
 int BeerClassifier::label(Mat &sample_image)
@@ -73,32 +72,31 @@ int BeerClassifier::label(Mat &sample_image)
 
 float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 {
+
     vector<Mat> imgs;
-    Mat train_labels(labels.size().height - 1, 1, CV_32FC1);
+    Mat train_labels(labels.size().height - 1, 1, CV_32SC1);
 
     float correct = 0;
-    
+
+    // Cross validate by withholding a sample, 1 at a time then testing on it.
     for (int i = 0; i < train_imgs.size(); i++) {
         imgs = train_imgs;
         imgs.erase(imgs.begin() + i);
 
-		cout << i << endl;
-		
+        // Create a new labels Mat without the ith row.
         int skipped = 0;
-        for (int j = 1; j == labels.size().height; j++) {
+        for (int j = 0; j < labels.size().height; j++) {
             if (i == j) {
                 skipped = 1;
 				continue;
             }
 
-            train_labels.at<float>(j - skipped, 0) = labels.at<float>(j, 0);
-
-
+            train_labels.at<int>(j - skipped, 0) = labels.at<int>(j, 0);
         }
 
         train(imgs, train_labels);
 
-        if (label(train_imgs[i]) == labels.at<float>(i, 0))
+        if (label(train_imgs[i]) == labels.at<int>(i, 0))
             correct++;
     }
 
