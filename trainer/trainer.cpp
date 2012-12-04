@@ -108,8 +108,9 @@ int main (int argc, char *argv[])
 
 	BeerClassifier classifier;
 
-	cout << classifier.cross_validate(images, cv_labels) << endl;
-
+//	cout << classifier.cross_validate(images, cv_labels) << endl;
+    classifier.train(images, cv_labels);
+    
 	classifier.save("bottles.model");
 
 	return 0;

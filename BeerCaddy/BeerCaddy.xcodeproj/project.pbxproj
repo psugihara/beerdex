@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A1134ED116649B5B00378D26 /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1134ED016649B5B00378D26 /* overlay@2x.png */; };
-		A15CACFD1664BC7E008CD86C /* bottles_88.model in Resources */ = {isa = PBXBuildFile; fileRef = A15CACFC1664BC7E008CD86C /* bottles_88.model */; };
 		A171603B1667E60800A8687A /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17160381667E5EB00A8687A /* AWSiOSSDK.framework */; };
+		A17B0D38166DB97C00D28D88 /* bottles88.model in Resources */ = {isa = PBXBuildFile; fileRef = A17B0D37166DB97C00D28D88 /* bottles88.model */; };
 		A1919C0416615FBE00205609 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0316615FBE00205609 /* UIKit.framework */; };
 		A1919C0616615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
 		A1919C0816615FBE00205609 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0716615FBE00205609 /* CoreGraphics.framework */; };
@@ -45,9 +45,9 @@
 /* Begin PBXFileReference section */
 		A1134ED016649B5B00378D26 /* overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay@2x.png"; sourceTree = "<group>"; };
 		A13C810A1662C75200624C82 /* Beers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Beers.h; sourceTree = "<group>"; };
-		A15CACFC1664BC7E008CD86C /* bottles_88.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bottles_88.model; sourceTree = "<group>"; };
 		A1657DA41661DE7E009878CA /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		A17160381667E5EB00A8687A /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = "aws-ios-sdk-1.4.4/AWSiOSSDK.framework"; sourceTree = "<group>"; };
+		A17B0D37166DB97C00D28D88 /* bottles88.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bottles88.model; path = ../../trainer/build/bottles88.model; sourceTree = "<group>"; };
 		A1919BFF16615FBE00205609 /* BeerCaddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCaddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1919C0316615FBE00205609 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1919C0516615FBE00205609 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,9 +160,9 @@
 			children = (
 				A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */,
 				A1134ED016649B5B00378D26 /* overlay@2x.png */,
-				A15CACFC1664BC7E008CD86C /* bottles_88.model */,
 				A1919C0C16615FBE00205609 /* InfoPlist.strings */,
 				A1919C0F16615FBE00205609 /* main.m */,
+				A17B0D37166DB97C00D28D88 /* bottles88.model */,
 				A1919C1116615FBE00205609 /* BeerCaddy-Prefix.pch */,
 				A1919C1516615FBE00205609 /* Default.png */,
 				A1919C1716615FBE00205609 /* Default@2x.png */,
@@ -267,7 +267,7 @@
 				A1919C1A16615FBE00205609 /* Default-568h@2x.png in Resources */,
 				A1919C1D16615FBE00205609 /* MainStoryboard.storyboard in Resources */,
 				A1134ED116649B5B00378D26 /* overlay@2x.png in Resources */,
-				A15CACFD1664BC7E008CD86C /* bottles_88.model in Resources */,
+				A17B0D38166DB97C00D28D88 /* bottles88.model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

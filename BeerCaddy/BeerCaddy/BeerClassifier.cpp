@@ -15,12 +15,14 @@ using namespace cv;
 
 static Mat extract_feats(Mat& im)
 {
-	//resizing image
-	Mat dest(540, 360, im.type());
+	// Change image to desired format (540x360 CV_8UC3).
+    Mat resize_dest(540, 360, im.type());
+	resize(im, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
 
-	resize(im, dest, dest.size(), 0, 0, INTER_CUBIC);
+    Mat convert_dest(540, 360, CV_8UC3);
+    cvtColor(resize_dest, convert_dest, CV_RGBA2RGB);
 
-	SiftDescriptorExtractor extractor;
+	SurfDescriptorExtractor extractor;
 
     vector<KeyPoint> keypoints;
     keypoints.push_back(KeyPoint(180, 330, 32));
@@ -34,7 +36,7 @@ static Mat extract_feats(Mat& im)
 
     Mat descriptors;
 
-    extractor.compute(dest, keypoints, descriptors);
+    extractor.compute(convert_dest, keypoints, descriptors);
 
     return descriptors.reshape(1, 1);
 }
@@ -58,8 +60,9 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
-    params.kernel_type = CvSVM::LINEAR;
-    params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 100, 1e-6);
+    params.kernel_type = CvSVM::POLY;
+    params.degree = 2;
+    params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 5000, 1e-6);
 
     svm_.train_auto(dest, labels, Mat(), Mat(), params, 24);
 }
@@ -98,6 +101,8 @@ float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 
         if (label(train_imgs[i]) == labels.at<int>(i, 0))
             correct++;
+
+        cout << correct << "/" << i << endl;
     }
 
     return correct / train_imgs.size();
