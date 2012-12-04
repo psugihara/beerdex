@@ -74,7 +74,7 @@ int read_images(char *root, vector<Mat> &images, vector<int> &labels)
 			if (isHidden(*it2))
 				continue;
 
-			Mat im = imread( (*it2).string(), CV_LOAD_IMAGE_COLOR );
+			Mat im = imread( (*it2).string(), CV_LOAD_IMAGE_COLOR);
 
 			images.push_back(im);
 			labels.push_back(num);
@@ -108,9 +108,9 @@ int main (int argc, char *argv[])
 
 	BeerClassifier classifier;
 
-//	cout << classifier.cross_validate(images, cv_labels) << endl;
-    classifier.train(images, cv_labels);
-    
+	cout << classifier.cross_validate(images, cv_labels) << endl;
+//    classifier.train(images, cv_labels);
+
 	classifier.save("bottles.model");
 
 	return 0;

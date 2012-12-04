@@ -20,10 +20,11 @@
 
 class BeerClassifier {
     CvSVM svm_;
-
+    
 public:
     void load(const char *path);
     void save(const char *path);
+    void train(cv::Mat &descriptors, cv::Mat &labels);
     void train(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
     int label(cv::Mat &sample);
     float cross_validate(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
