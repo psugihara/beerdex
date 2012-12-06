@@ -10,7 +10,10 @@
 #import "BeerClassifier.h"
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@public
     BeerClassifier bottler;
 }
+
+- (NSString *)labelImage:(UIImage *)image;
 
 @end

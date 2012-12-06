@@ -20,11 +20,7 @@ static Mat extract_feats(Mat& im)
 	resize(im, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
 
     Mat convert_dest(540, 360, CV_8UC3);
-    cvtColor(resize_dest, convert_dest, CV_RGBA2RGB);
-
-//    Mat diff(convert_dest);
-//    bitwise_xor(resize_dest, convert_dest, diff);
-//    cout << sum(diff) << endl;
+    cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
 
 	SiftDescriptorExtractor extractor;
 
@@ -50,8 +46,8 @@ void BeerClassifier::train(cv::Mat &descriptors, cv::Mat &labels)
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
-    params.kernel_type = CvSVM::POLY;
-    params.degree = 2;
+    params.kernel_type = CvSVM::LINEAR;
+//    params.degree = 2;
     params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 6000, 1e-6);
 
     svm_.train_auto(descriptors, labels, Mat(), Mat(), params, 24);
