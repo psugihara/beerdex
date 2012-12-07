@@ -51,7 +51,7 @@
 
 #pragma mark - Camera
 
-- (BOOL) startCameraControllerFromViewController:(UIViewController*) controller
+- (BOOL)startCameraControllerFromViewController:(UIViewController*) controller
                                    usingDelegate:(id <UIImagePickerControllerDelegate,
                                                    UINavigationControllerDelegate>) delegate {
 
@@ -82,12 +82,12 @@
 }
 
 // For responding to the user tapping Cancel.
-- (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {
+- (void)imagePickerControllerDidCancel: (UIImagePickerController *) picker {
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 // For responding to the user accepting a newly-captured picture or movie
-- (void) imagePickerController: (UIImagePickerController *) picker
+- (void)imagePickerController: (UIImagePickerController *) picker
  didFinishPickingMediaWithInfo: (NSDictionary *) info {
 
     NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
@@ -108,15 +108,8 @@
             imageToSave = originalImage;
         }
 
-        // Reformat image and classify.
-        cv::Mat img = [self cvMatFromUIImage:imageToSave];
-        int label = bottler.label(img);
-
-        NSArray *beers = @[@"bud_light", @"budweiser", @"coors_light", @"corona",
-                   @"heineken", @"magic_hat", @"rolling_rock", @"sierra_nevada",
-                   @"stella_artois", @"yuengling"];
-
-        NSString *message = [NSString stringWithFormat:@"I think that's a %@ bottle?", beers[label]];
+		NSString *beer_name = [self labelImage:imageToSave];
+        NSString *message = [NSString stringWithFormat:@"I think that's a %@ bottle?", beer_name];
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Prediction!"
                                                         message:message
@@ -129,11 +122,29 @@
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+#pragma mark Image recognition
+
+- (NSString *)labelImage:(UIImage *)image
+{
+	// Reformat image and classify.
+	cv::Mat img = [self cvMatFromUIImage:image];
+	int label = bottler.label(img);
+
+	NSArray *beers = @[@"bud_light", @"budweiser", @"coors_light", @"corona",
+	@"heineken", @"magic_hat", @"rolling_rock", @"sierra_nevada",
+	@"stella_artois", @"yuengling"];
+
+	return beers[label];
+}
+
 - (cv::Mat)cvMatFromUIImage:(UIImage *)image
 {
     CGColorSpaceRef colorSpace = CGImageGetColorSpace(image.CGImage);
     CGFloat cols = image.size.width;
     CGFloat rows = image.size.height;
+
+	NSLog(@"%f", cols);
 
     cv::Mat cvMat(rows, cols, CV_8UC4); // 8 bits per component, 4 channels
 
@@ -149,8 +160,48 @@
     CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), image.CGImage);
     CGContextRelease(contextRef);
     CGColorSpaceRelease(colorSpace);
+
+    // transpose for portrait orientation
+    cv::flip(cvMat, cvMat, 0);
     
-    return cvMat;
+    return cvMat.t();
+}
+
+- (UIImage *)UIImageFromCVMat:(cv::Mat)cvMat
+{
+	NSData *data = [NSData dataWithBytes:cvMat.data length:cvMat.elemSize()*cvMat.total()];
+	CGColorSpaceRef colorSpace;
+
+	if (cvMat.elemSize() == 1) {
+		colorSpace = CGColorSpaceCreateDeviceGray();
+	} else {
+		colorSpace = CGColorSpaceCreateDeviceRGB();
+	}
+
+	CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)data);
+
+	// Creating CGImage from cv::Mat
+	CGImageRef imageRef = CGImageCreate(cvMat.cols,                                 //width
+					    cvMat.rows,                                 //height
+					    8,                                          //bits per component
+					    8 * cvMat.elemSize(),                       //bits per pixel
+					    cvMat.step[0],                            //bytesPerRow
+					    colorSpace,                                 //colorspace
+					    kCGImageAlphaNone|kCGBitmapByteOrderDefault,// bitmap info
+					    provider,                                   //CGDataProviderRef
+					    NULL,                                       //decode
+					    false,                                      //should interpolate
+					    kCGRenderingIntentDefault                   //intent
+					    );
+
+
+	// Getting UIImage from CGImage
+	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];
+	CGImageRelease(imageRef);
+	CGDataProviderRelease(provider);
+	CGColorSpaceRelease(colorSpace);
+
+	return finalImage;
 }
 
 @end

@@ -257,8 +257,8 @@ void BeerClassifier::train_on_descriptors(Mat &descriptors, Mat &labels)
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
-    params.kernel_type = CvSVM::POLY;
-    params.degree = 2;
+    params.kernel_type = CvSVM::LINEAR;
+//    params.degree = 2;
     params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 6000, 1e-6);
 
     svm_.train_auto(descriptors, labels, Mat(), Mat(), params, 24);
