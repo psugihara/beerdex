@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-    
+
 @end
 
 @implementation MainViewController
@@ -17,10 +17,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"bottles_88"
                                                                           ofType:@"model"];
-    bottler.load([filePath UTF8String]);
+    if (filePath)
+        bottler.load([filePath UTF8String]);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -108,20 +108,25 @@
             imageToSave = originalImage;
         }
 
-		NSString *beer_name = [self labelImage:imageToSave];
+	NSString *beer_name = [self labelImage:imageToSave];
         NSString *message = [NSString stringWithFormat:@"I think that's a %@ bottle?", beer_name];
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Prediction!"
                                                         message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+                                                       delegate:self
+                                              cancelButtonTitle:@"Yep!"
+                                              otherButtonTitles:@"Nope!", nil];
         [alert show];
     }
 
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == 1)
+        [self performSegueWithIdentifier:@"showAlternate" sender: self];
+}
 
 #pragma mark Image recognition
 
@@ -163,7 +168,6 @@
 
     // transpose for portrait orientation
     cv::flip(cvMat, cvMat, 0);
-    
     return cvMat.t();
 }
 

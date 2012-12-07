@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A1134ED116649B5B00378D26 /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1134ED016649B5B00378D26 /* overlay@2x.png */; };
 		A171603B1667E60800A8687A /* AWSiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17160381667E5EB00A8687A /* AWSiOSSDK.framework */; };
-		A17B0D38166DB97C00D28D88 /* bottles88.model in Resources */ = {isa = PBXBuildFile; fileRef = A17B0D37166DB97C00D28D88 /* bottles88.model */; };
 		A1919C0416615FBE00205609 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0316615FBE00205609 /* UIKit.framework */; };
 		A1919C0616615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
 		A1919C0816615FBE00205609 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0716615FBE00205609 /* CoreGraphics.framework */; };
@@ -25,11 +24,23 @@
 		A1919C2C16615FBE00205609 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0316615FBE00205609 /* UIKit.framework */; };
 		A1919C2D16615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
 		A1919C3516615FBE00205609 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1919C3316615FBE00205609 /* InfoPlist.strings */; };
-		A1919C3816615FBE00205609 /* BeerCaddyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A1919C3716615FBE00205609 /* BeerCaddyTests.m */; };
+		A1919C3816615FBE00205609 /* BeerCaddyTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1919C3716615FBE00205609 /* BeerCaddyTests.mm */; };
 		A1919C491661931700205609 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1919C481661931700205609 /* MainViewController.mm */; };
 		A1919C4D1661AB0D00205609 /* BeerClassifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */; };
 		A1B57E741661E21E00E891EB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C46166176B300205609 /* MobileCoreServices.framework */; };
 		A1B57E751661E27B00E891EB /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1657DA41661DE7E009878CA /* opencv2.framework */; };
+		A1F074BA1671303200CECB4E /* S3DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F074B91671303200CECB4E /* S3DAO.m */; };
+		A1F074BB1671303200CECB4E /* S3DAO.m in Sources */ = {isa = PBXBuildFile; fileRef = A1F074B91671303200CECB4E /* S3DAO.m */; };
+		A1FCAEAF166F5391002C2345 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1657DA41661DE7E009878CA /* opencv2.framework */; };
+		A1FCAEB2166F56DA002C2345 /* BeerCaddy-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */; };
+		A1FCAEB3166F56DA002C2345 /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1134ED016649B5B00378D26 /* overlay@2x.png */; };
+		A1FCAEB4166F56DA002C2345 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1919C0C16615FBE00205609 /* InfoPlist.strings */; };
+		A1FCAEB5166F56DA002C2345 /* main.m in Resources */ = {isa = PBXBuildFile; fileRef = A1919C0F16615FBE00205609 /* main.m */; };
+		A1FCAEB7166F56DA002C2345 /* BeerCaddy-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1116615FBE00205609 /* BeerCaddy-Prefix.pch */; };
+		A1FCAEB8166F56DA002C2345 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1516615FBE00205609 /* Default.png */; };
+		A1FCAEB9166F56DA002C2345 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1716615FBE00205609 /* Default@2x.png */; };
+		A1FCAEBA166F56DA002C2345 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1916615FBE00205609 /* Default-568h@2x.png */; };
+		A1FCAEC3167080BB002C2345 /* bottles88.model in Resources */ = {isa = PBXBuildFile; fileRef = A1FCAEC2167080BB002C2345 /* bottles88.model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +58,6 @@
 		A13C810A1662C75200624C82 /* Beers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Beers.h; sourceTree = "<group>"; };
 		A1657DA41661DE7E009878CA /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		A17160381667E5EB00A8687A /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = "aws-ios-sdk-1.4.4/AWSiOSSDK.framework"; sourceTree = "<group>"; };
-		A17B0D37166DB97C00D28D88 /* bottles88.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bottles88.model; path = ../../trainer/build/bottles88.model; sourceTree = "<group>"; };
 		A1919BFF16615FBE00205609 /* BeerCaddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCaddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1919C0316615FBE00205609 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1919C0516615FBE00205609 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -70,11 +80,14 @@
 		A1919C3216615FBE00205609 /* BeerCaddyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeerCaddyTests-Info.plist"; sourceTree = "<group>"; };
 		A1919C3416615FBE00205609 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1919C3616615FBE00205609 /* BeerCaddyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeerCaddyTests.h; sourceTree = "<group>"; };
-		A1919C3716615FBE00205609 /* BeerCaddyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeerCaddyTests.m; sourceTree = "<group>"; };
+		A1919C3716615FBE00205609 /* BeerCaddyTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BeerCaddyTests.mm; sourceTree = "<group>"; };
 		A1919C46166176B300205609 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1919C481661931700205609 /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
 		A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeerClassifier.cpp; sourceTree = "<group>"; };
 		A1919C4C1661AB0D00205609 /* BeerClassifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeerClassifier.h; sourceTree = "<group>"; };
+		A1F074B81671303200CECB4E /* S3DAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3DAO.h; sourceTree = "<group>"; };
+		A1F074B91671303200CECB4E /* S3DAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3DAO.m; sourceTree = "<group>"; };
+		A1FCAEC2167080BB002C2345 /* bottles88.model */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bottles88.model; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1FCAEAF166F5391002C2345 /* opencv2.framework in Frameworks */,
 				A1919C2B16615FBE00205609 /* SenTestingKit.framework in Frameworks */,
 				A1919C2C16615FBE00205609 /* UIKit.framework in Frameworks */,
 				A1919C2D16615FBE00205609 /* Foundation.framework in Frameworks */,
@@ -145,6 +159,8 @@
 				A1919C1B16615FBE00205609 /* MainStoryboard.storyboard */,
 				A1919C1E16615FBE00205609 /* MainViewController.h */,
 				A1919C481661931700205609 /* MainViewController.mm */,
+				A1F074B81671303200CECB4E /* S3DAO.h */,
+				A1F074B91671303200CECB4E /* S3DAO.m */,
 				A1919C2116615FBE00205609 /* FlipsideViewController.h */,
 				A1919C2216615FBE00205609 /* FlipsideViewController.m */,
 				A1919C4C1661AB0D00205609 /* BeerClassifier.h */,
@@ -158,11 +174,11 @@
 		A1919C0A16615FBE00205609 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A1FCAEC2167080BB002C2345 /* bottles88.model */,
 				A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */,
 				A1134ED016649B5B00378D26 /* overlay@2x.png */,
 				A1919C0C16615FBE00205609 /* InfoPlist.strings */,
 				A1919C0F16615FBE00205609 /* main.m */,
-				A17B0D37166DB97C00D28D88 /* bottles88.model */,
 				A1919C1116615FBE00205609 /* BeerCaddy-Prefix.pch */,
 				A1919C1516615FBE00205609 /* Default.png */,
 				A1919C1716615FBE00205609 /* Default@2x.png */,
@@ -175,7 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				A1919C3616615FBE00205609 /* BeerCaddyTests.h */,
-				A1919C3716615FBE00205609 /* BeerCaddyTests.m */,
+				A1919C3716615FBE00205609 /* BeerCaddyTests.mm */,
 				A1919C3116615FBE00205609 /* Supporting Files */,
 			);
 			path = BeerCaddyTests;
@@ -267,7 +283,7 @@
 				A1919C1A16615FBE00205609 /* Default-568h@2x.png in Resources */,
 				A1919C1D16615FBE00205609 /* MainStoryboard.storyboard in Resources */,
 				A1134ED116649B5B00378D26 /* overlay@2x.png in Resources */,
-				A17B0D38166DB97C00D28D88 /* bottles88.model in Resources */,
+				A1FCAEC3167080BB002C2345 /* bottles88.model in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +291,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1FCAEB2166F56DA002C2345 /* BeerCaddy-Info.plist in Resources */,
+				A1FCAEB3166F56DA002C2345 /* overlay@2x.png in Resources */,
+				A1FCAEB4166F56DA002C2345 /* InfoPlist.strings in Resources */,
+				A1FCAEB5166F56DA002C2345 /* main.m in Resources */,
+				A1FCAEB7166F56DA002C2345 /* BeerCaddy-Prefix.pch in Resources */,
+				A1FCAEB8166F56DA002C2345 /* Default.png in Resources */,
+				A1FCAEB9166F56DA002C2345 /* Default@2x.png in Resources */,
+				A1FCAEBA166F56DA002C2345 /* Default-568h@2x.png in Resources */,
 				A1919C3516615FBE00205609 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +331,7 @@
 				A1919C2316615FBE00205609 /* FlipsideViewController.m in Sources */,
 				A1919C491661931700205609 /* MainViewController.mm in Sources */,
 				A1919C4D1661AB0D00205609 /* BeerClassifier.cpp in Sources */,
+				A1F074BA1671303200CECB4E /* S3DAO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +339,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1919C3816615FBE00205609 /* BeerCaddyTests.m in Sources */,
+				A1919C3816615FBE00205609 /* BeerCaddyTests.mm in Sources */,
+				A1F074BB1671303200CECB4E /* S3DAO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +438,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/aws-ios-sdk-1.4.4\"",
+					"\"$(SRCROOT)/aws-ios-sdk-1.4.4\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
@@ -428,7 +454,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/aws-ios-sdk-1.4.4\"",
+					"\"$(SRCROOT)/aws-ios-sdk-1.4.4\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
@@ -445,6 +471,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
@@ -462,6 +489,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
