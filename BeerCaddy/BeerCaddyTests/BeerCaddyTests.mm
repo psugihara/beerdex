@@ -7,6 +7,7 @@
 //
 
 #import "BeerCaddyTests.h"
+#import "MainViewController.h"
 
 @implementation BeerCaddyTests
 
@@ -24,10 +25,14 @@
     [super tearDown];
 }
 
-
-- (void)extractFeats
+- (void)testAppDelegate
 {
-    UIImage *img = [UIImage imageWithContentsOfFile:@"test.jpg"];
+//	id appDelegate = [[UIApplication sharedApplication] delegate];
+//	STAssertNotNil(appDelegate, @"Cannot find the application delegate.");
+}
+
+- (void)labelUIImage
+{
 }
 
 @end

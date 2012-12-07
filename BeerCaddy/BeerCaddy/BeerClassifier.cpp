@@ -35,6 +35,9 @@ static vector<KeyPoint> generate_keypoints_bow()
 {
 	vector<KeyPoint> keypoints;
 
+	// this set of keypoints with 1000 clusters will return:
+	// 90% in cross validation using the lbw-a dataset
+
 	// y range of x range
 	// 80 to 220 of 150 to 210
 
@@ -160,9 +163,7 @@ static Mat extract_feats(Mat& im, vector<KeyPoint> keypoints)
     cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
 
 	SiftDescriptorExtractor extractor;
-
     Mat descriptors;
-
     extractor.compute(convert_dest, keypoints, descriptors);
 
     return descriptors.reshape(1, 1);
@@ -185,7 +186,7 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 
 	Mat l2;
 
-	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+	for (i = 0, it = train_imgs.begin(); it < train_imgs.end(); it++, i++) {
 
 		if ((*it).size().height < 540 || (*it).size().width < 360) {
 			skipped++;
@@ -210,7 +211,6 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 		extractor.compute(convert_dest, keypoints, descriptor);
 
 		descriptors.push_back(descriptor);
-		i++;
 	}
 
 	BOWKMeansTrainer bow_trainer(cluster_num);
@@ -249,8 +249,6 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 		bow_extractor.compute(convert_dest, keypoints, bow_descriptor);
 
 		bow_descriptor.copyTo(bow_descriptors.row(i));
-		
-		i++;
 	}
 
 	labels = l2;
@@ -265,8 +263,6 @@ void BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
 	Mat bow_descriptors = extract_desc_bow(train_imgs, labels);
 
 	train_on_descriptors(bow_descriptors, labels);
-
-	cout << bow_descriptors.size() << endl;
 }
 
 
@@ -289,26 +285,16 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 
 	Mat descriptors(train_imgs.size(), FRAMES * 128, CV_32FC1);
 
-	int i = 0;
-    vector<Mat>::iterator it;
-
-	int count = 0;
-
 	vector<KeyPoint> keypoints = generate_keypoints();
+    
+    int i;
+    vector<Mat>::iterator it;
+	for (i = 0, it = train_imgs.begin(); it < train_imgs.end(); it++, i++) {
 
-
-	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
-		count++;
-		
 		Mat descriptor = extract_feats(*it, keypoints);
 
-		cout << descriptor << "end" << endl;
-
 		descriptor.copyTo(descriptors.row(i));
-		i++;
 	}
-	cout << count << endl;
-	cout << descriptors << "end" << endl;
 
     train_on_descriptors(descriptors, labels);
 }
@@ -326,7 +312,6 @@ int BeerClassifier::label_bow(Mat &sample_image)
 	vector<KeyPoint> keypoints = generate_keypoints_bow();
 
     CvMat feats = extract_bow(sample_image, keypoints, vocab_);
-
     return svm_.predict(&feats);
 }
 
@@ -444,28 +429,12 @@ void BeerClassifier::save(const char *path)
 
 void BeerClassifier::save_with_bow(const char *path_model, const char *path_vocab)
 {
-	cout << vocab_.size() << endl;
-	cout << "save" << endl;
-
-
     svm_.save(path_model);
-
-	cout << "save" << endl;
-
-
 	FileStorage fs(path_vocab, FileStorage::WRITE);
-	fs << "mtx" << vocab_;
-	
-	
 }
 
 void BeerClassifier::load_with_bow(const char *path_model, const char *path_vocab)
 {
     svm_.load(path_model);
-
 	FileStorage fs(path_vocab, FileStorage::READ);
-
-	fs["mtx"] >> vocab_;
-
-	
 }

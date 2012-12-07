@@ -108,10 +108,17 @@ int main (int argc, char *argv[])
 
 	BeerClassifier classifier;
 
+<<<<<<< HEAD
 	//cout << classifier.cross_validate_bow(images, cv_labels) << endl;
 	
     classifier.train_bow(images, cv_labels);
 	classifier.save_with_bow("bottles.model", "vocab.yml");
+=======
+	cout << classifier.cross_validate_bow(images, cv_labels) << endl;
+    //classifier.train_bow(images, cv_labels);
+
+	//classifier.save_with_bow("bottles.model", "vocab.yml");
+>>>>>>> e4bc7e52333c9bd29f16c60e380c7a2f24204e85
 
 	return 0;
 }

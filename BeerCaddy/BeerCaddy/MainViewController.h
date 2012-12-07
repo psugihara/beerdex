@@ -8,11 +8,13 @@
 
 #import "FlipsideViewController.h"
 #import "BeerClassifier.h"
+#import "S3DAO.h"
 
-@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
-@public
+@interface MainViewController : UIViewController <FlipsideViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate> {
     BeerClassifier bottler;
 }
+
+@property (nonatomic, retain) S3DAO *s3;
 
 - (NSString *)labelImage:(UIImage *)image;
 
