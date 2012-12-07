@@ -9,11 +9,148 @@
 #include "BeerClassifier.h"
 
 #define FRAMES 8
+#define BOW_FRAMES 35
+
 
 using namespace std;
 using namespace cv;
 
-static Mat extract_feats(Mat& im)
+static vector<KeyPoint> generate_keypoints()
+{
+	vector<KeyPoint> keypoints;
+    keypoints.push_back(KeyPoint(180, 330, 32));
+    keypoints.push_back(KeyPoint(180, 330, 16));
+    keypoints.push_back(KeyPoint(180, 300, 32));
+    keypoints.push_back(KeyPoint(180, 170, 32));
+    keypoints.push_back(KeyPoint(150, 300, 16));
+    keypoints.push_back(KeyPoint(150, 330, 16));
+    keypoints.push_back(KeyPoint(210, 300, 16));
+    keypoints.push_back(KeyPoint(210, 330, 16));
+
+	return keypoints;
+	
+}
+
+static vector<KeyPoint> generate_keypoints_bow()
+{
+	vector<KeyPoint> keypoints;
+
+	// y range of x range
+	// 80 to 220 of 150 to 210
+
+    //keypoints.push_back(KeyPoint(150, 80, 16));
+    //keypoints.push_back(KeyPoint(170, 80, 16));
+    //keypoints.push_back(KeyPoint(190, 80, 16));
+	//keypoints.push_back(KeyPoint(210, 80, 16));
+
+	//keypoints.push_back(KeyPoint(150, 100, 16));
+    keypoints.push_back(KeyPoint(170, 100, 16));
+    keypoints.push_back(KeyPoint(190, 100, 16));
+	//keypoints.push_back(KeyPoint(210, 100, 16));
+
+	//keypoints.push_back(KeyPoint(150, 120, 16));
+    keypoints.push_back(KeyPoint(170, 120, 16));
+    keypoints.push_back(KeyPoint(190, 120, 16));
+	//keypoints.push_back(KeyPoint(210, 120, 16));
+
+	//keypoints.push_back(KeyPoint(150, 140, 16));
+    keypoints.push_back(KeyPoint(170, 140, 16));
+    keypoints.push_back(KeyPoint(190, 140, 16));
+	//keypoints.push_back(KeyPoint(210, 140, 16));
+
+	//keypoints.push_back(KeyPoint(150, 160, 16));
+    keypoints.push_back(KeyPoint(170, 160, 16));
+    keypoints.push_back(KeyPoint(190, 160, 16));
+	//keypoints.push_back(KeyPoint(210, 160, 16));
+
+	//keypoints.push_back(KeyPoint(150, 180, 16));
+    keypoints.push_back(KeyPoint(170, 180, 16));
+    keypoints.push_back(KeyPoint(190, 180, 16));
+	//keypoints.push_back(KeyPoint(210, 180, 16));
+
+	//keypoints.push_back(KeyPoint(150, 200, 16));
+    keypoints.push_back(KeyPoint(170, 200, 16));
+    keypoints.push_back(KeyPoint(190, 200, 16));
+	//keypoints.push_back(KeyPoint(210, 200, 16));
+
+	//keypoints.push_back(KeyPoint(150, 200, 16));
+    keypoints.push_back(KeyPoint(170, 220, 16));
+    keypoints.push_back(KeyPoint(190, 220, 16));
+	//keypoints.push_back(KeyPoint(210, 200, 16));
+
+
+
+	// y range of x range
+	// 250 to 450 of 130 to 230
+
+	//keypoints.push_back(KeyPoint(130, 250, 16));
+    //keypoints.push_back(KeyPoint(155, 250, 16));
+    //keypoints.push_back(KeyPoint(180, 250, 16));
+	//keypoints.push_back(KeyPoint(205, 250, 16));
+	//keypoints.push_back(KeyPoint(230, 250, 16));
+
+	//keypoints.push_back(KeyPoint(130, 275, 16));
+    keypoints.push_back(KeyPoint(155, 275, 16));
+    keypoints.push_back(KeyPoint(180, 275, 16));
+	keypoints.push_back(KeyPoint(205, 275, 16));
+	//keypoints.push_back(KeyPoint(230, 275, 16));
+
+	//keypoints.push_back(KeyPoint(130, 300, 16));
+    keypoints.push_back(KeyPoint(155, 300, 16));
+    keypoints.push_back(KeyPoint(180, 300, 16));
+	keypoints.push_back(KeyPoint(205, 300, 16));
+	//keypoints.push_back(KeyPoint(230, 300, 16));
+
+	//keypoints.push_back(KeyPoint(130, 325, 16));
+    keypoints.push_back(KeyPoint(155, 325, 16));
+    keypoints.push_back(KeyPoint(180, 325, 16));
+	keypoints.push_back(KeyPoint(205, 325, 16));
+	//keypoints.push_back(KeyPoint(230, 325, 16));
+
+	//keypoints.push_back(KeyPoint(130, 350, 16));
+    keypoints.push_back(KeyPoint(155, 350, 16));
+    keypoints.push_back(KeyPoint(180, 350, 16));
+	keypoints.push_back(KeyPoint(205, 350, 16));
+	//keypoints.push_back(KeyPoint(230, 350, 16));
+
+	//keypoints.push_back(KeyPoint(130, 375, 16));
+    keypoints.push_back(KeyPoint(155, 375, 16));
+    keypoints.push_back(KeyPoint(180, 375, 16));
+	keypoints.push_back(KeyPoint(205, 375, 16));
+	//keypoints.push_back(KeyPoint(230, 375, 16));
+
+	//keypoints.push_back(KeyPoint(130, 400, 16));
+    keypoints.push_back(KeyPoint(155, 400, 16));
+    keypoints.push_back(KeyPoint(180, 400, 16));
+	keypoints.push_back(KeyPoint(205, 400, 16));
+	//keypoints.push_back(KeyPoint(230, 400, 16));
+
+	//keypoints.push_back(KeyPoint(130, 425, 16));
+    keypoints.push_back(KeyPoint(155, 425, 16));
+    keypoints.push_back(KeyPoint(180, 425, 16));
+	keypoints.push_back(KeyPoint(205, 425, 16));
+	//keypoints.push_back(KeyPoint(230, 425, 16));
+	
+	return keypoints;
+}
+
+static Mat extract_bow(Mat& im, vector<KeyPoint> keypoints, Mat& vocab)
+{
+
+	SiftDescriptorExtractor *extractor = new SiftDescriptorExtractor();
+	FlannBasedMatcher *matcher = new FlannBasedMatcher();
+
+	BOWImgDescriptorExtractor bow_extractor(extractor, matcher);
+	bow_extractor.setVocabulary(vocab);
+
+	Mat bow_descriptor;
+
+	bow_extractor.compute(im, keypoints, bow_descriptor);
+
+    return bow_descriptor.reshape(1, 1);
+}
+
+static Mat extract_feats(Mat& im, vector<KeyPoint> keypoints)
 {
 	// Change image to desired format (540x360 CV_8UC3).
     Mat resize_dest(540, 360, im.type());
@@ -24,16 +161,6 @@ static Mat extract_feats(Mat& im)
 
 	SiftDescriptorExtractor extractor;
 
-    vector<KeyPoint> keypoints;
-    keypoints.push_back(KeyPoint(180, 330, 32));
-    keypoints.push_back(KeyPoint(180, 330, 16));
-    keypoints.push_back(KeyPoint(180, 300, 32));
-    keypoints.push_back(KeyPoint(180, 170, 32));
-    keypoints.push_back(KeyPoint(150, 300, 16));
-    keypoints.push_back(KeyPoint(150, 330, 16));
-    keypoints.push_back(KeyPoint(210, 300, 16));
-    keypoints.push_back(KeyPoint(210, 330, 16));
-
     Mat descriptors;
 
     extractor.compute(convert_dest, keypoints, descriptors);
@@ -41,7 +168,91 @@ static Mat extract_feats(Mat& im)
     return descriptors.reshape(1, 1);
 }
 
-void BeerClassifier::train(cv::Mat &descriptors, cv::Mat &labels)
+
+
+
+Mat BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
+{
+	Mat descriptors;
+	int cluster_num = 30;
+
+	int i = 0;
+    vector<Mat>::iterator it;
+
+	vector<KeyPoint> keypoints = generate_keypoints_bow();
+	//vector<KeyPoint> keypoints2 = generate_keypoints_bow();
+
+
+	//SiftFeatureDetector detector;
+	//vector<KeyPoint> keypoints;
+
+	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+
+		Mat resize_dest(540, 360, (*it).type());
+		resize(*it, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
+
+		Mat convert_dest(540, 360, CV_8UC3);
+		cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
+
+		//detector.detect(convert_dest,keypoints);
+
+		cout << keypoints.size() << endl;
+
+		SiftDescriptorExtractor extractor;
+
+		Mat descriptor;
+
+		extractor.compute(convert_dest, keypoints, descriptor);
+
+		descriptors.push_back(descriptor);
+		i++;
+	}
+
+	BOWKMeansTrainer bow_trainer(cluster_num);
+
+	Mat vocab = bow_trainer.cluster(descriptors);
+
+	vocab_ = vocab;
+
+	SiftDescriptorExtractor *extractor = new SiftDescriptorExtractor();
+	FlannBasedMatcher *matcher = new FlannBasedMatcher();
+
+	BOWImgDescriptorExtractor bow_extractor(extractor, matcher);
+	bow_extractor.setVocabulary(vocab);
+
+	Mat bow_descriptors(train_imgs.size(), cluster_num, CV_32F);
+
+	i = 0;
+	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+
+		Mat bow_descriptor;
+
+		Mat resize_dest(540, 360, (*it).type());
+		resize(*it, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
+
+		Mat convert_dest(540, 360, CV_8UC3);
+		cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
+
+		//detector.detect(convert_dest,keypoints2);
+
+		bow_extractor.compute(convert_dest, keypoints, bow_descriptor);
+		
+		bow_descriptor.copyTo(bow_descriptors.row(i));
+		
+		i++;
+	}
+
+	train_on_descriptors(bow_descriptors, labels);
+
+	cout << bow_descriptors.size() << endl;
+
+	return bow_descriptors;
+}
+
+
+
+
+void BeerClassifier::train_on_descriptors(Mat &descriptors, Mat &labels)
 {
     // Set up SVM's parameters
     CvSVMParams params;
@@ -60,18 +271,42 @@ void BeerClassifier::train(vector<Mat> &train_imgs, Mat &labels)
 
 	int i = 0;
     vector<Mat>::iterator it;
+
+	int count = 0;
+
+	vector<KeyPoint> keypoints = generate_keypoints();
+
+
 	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
-		Mat descriptor = extract_feats(*it);
+		count++;
+		
+		Mat descriptor = extract_feats(*it, keypoints);
+
+		cout << descriptor << "end" << endl;
+
 		descriptor.copyTo(descriptors.row(i));
 		i++;
 	}
+	cout << count << endl;
+	cout << descriptors << "end" << endl;
 
-    train(descriptors, labels);
+    train_on_descriptors(descriptors, labels);
 }
 
 int BeerClassifier::label(Mat &sample_image)
 {
-    CvMat feats = extract_feats(sample_image);
+	vector<KeyPoint> keypoints = generate_keypoints();
+
+    CvMat feats = extract_feats(sample_image, keypoints);
+    return svm_.predict(&feats);
+}
+
+int BeerClassifier::label_bow(Mat &sample_image)
+{
+	vector<KeyPoint> keypoints = generate_keypoints_bow();
+
+    CvMat feats = extract_bow(sample_image, keypoints, vocab_);
+
     return svm_.predict(&feats);
 }
 
@@ -79,10 +314,13 @@ float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 {
     // Get all descriptors so we just calculate these once.
     Mat descriptors(train_imgs.size(), FRAMES * 128, CV_32FC1);
+
+	vector<KeyPoint> keypoints = generate_keypoints();
+
 	int i = 0;
     vector<Mat>::iterator it;
 	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
-		Mat descriptor = extract_feats(*it);
+		Mat descriptor = extract_feats(*it, keypoints);
 		descriptor.copyTo(descriptors.row(i));
 		i++;
 	}
@@ -108,7 +346,43 @@ float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
             descriptors.row(j).copyTo(train_feats.row(j - skipped));
         }
 
-        train(train_feats, train_labels);
+        train_on_descriptors(train_feats, train_labels);
+
+        if (svm_.predict(descriptors.row(i)) == labels.at<int>(i, 0))
+            correct++;
+
+        cout << correct << "/" << i + 1 << endl;
+    }
+
+    return correct / train_imgs.size();
+}
+
+float BeerClassifier::cross_validate_bow(vector<Mat> &train_imgs, Mat &labels)
+{
+	Mat descriptors = train_bow(train_imgs, labels);
+
+    Mat train_feats(descriptors.size().height - 1,
+                    descriptors.size().width, descriptors.type());
+    Mat train_labels(labels.size().height - 1, 1, labels.type());
+
+    float correct = 0;
+
+    // Cross validate by withholding a sample, 1 at a time then testing on it.
+    for (int i = 0; i < train_imgs.size(); i++) {
+
+        // Create a new training Mats without the ith row.
+        int skipped = 0;
+        for (int j = 0; j < labels.size().height; j++) {
+            if (i == j) {
+                skipped = 1;
+				continue;
+            }
+
+            labels.row(j).copyTo(train_labels.row(j - skipped));
+            descriptors.row(j).copyTo(train_feats.row(j - skipped));
+        }
+
+        train_on_descriptors(train_feats, train_labels);
 
         if (svm_.predict(descriptors.row(i)) == labels.at<int>(i, 0))
             correct++;
@@ -129,4 +403,32 @@ void BeerClassifier::load(const char *path)
 void BeerClassifier::save(const char *path)
 {
     svm_.save(path);
+}
+
+void BeerClassifier::save_with_bow(const char *path_model, const char *path_vocab)
+{
+	cout << vocab_.size() << endl;
+	cout << "save" << endl;
+
+
+    svm_.save(path_model);
+
+	cout << "save" << endl;
+
+
+	FileStorage fs(path_vocab, FileStorage::WRITE);
+	fs << "mtx" << vocab_;
+	
+	
+}
+
+void BeerClassifier::load_with_bow(const char *path_model, const char *path_vocab)
+{
+    svm_.load(path_model);
+
+	FileStorage fs(path_vocab, FileStorage::READ);
+
+	fs["mtx"] >> vocab_;
+
+	
 }

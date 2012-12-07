@@ -20,14 +20,20 @@
 
 class BeerClassifier {
     CvSVM svm_;
+	cv::Mat vocab_;
     
 public:
     void load(const char *path);
     void save(const char *path);
-    void train(cv::Mat &descriptors, cv::Mat &labels);
+    void train_on_descriptors(cv::Mat &descriptors, cv::Mat &labels);
     void train(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
     int label(cv::Mat &sample);
     float cross_validate(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
+	cv::Mat train_bow(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
+	void save_with_bow(const char *path_model, const char *path_vocab);
+	int label_bow(cv::Mat &sample_image);
+	void load_with_bow(const char *path_model, const char *path_vocab);
+	float cross_validate_bow(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
 };
 
 #endif /* defined(__BeerCaddy__BeerClassifier__) */
