@@ -61,11 +61,11 @@ int main (int argc, char *argv[])
 	BeerClassifier classifier;
 
     
-	classifier.load("../../trainer/build/bottles.model");
+	classifier.load_with_bow("../trainer/build/bottles.model", "../trainer/build/vocab.yml");
 
 	Mat im = imread( argv[1], CV_LOAD_IMAGE_COLOR );
 
-	cout << "result: " << m[classifier.label(im)] << endl;
+	cout << "result: " << m[classifier.label_bow(im)] << endl;
 
 
 	/*

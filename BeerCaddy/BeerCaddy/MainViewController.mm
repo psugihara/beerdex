@@ -18,7 +18,7 @@
 {
     [super viewDidLoad];
 
-    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"bottles_88"
+    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"bottles88"
                                                                           ofType:@"model"];
     bottler.load([filePath UTF8String]);
 }
