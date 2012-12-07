@@ -38,98 +38,98 @@ static vector<KeyPoint> generate_keypoints_bow()
 	// y range of x range
 	// 80 to 220 of 150 to 210
 
-    //keypoints.push_back(KeyPoint(150, 80, 16));
-    //keypoints.push_back(KeyPoint(170, 80, 16));
-    //keypoints.push_back(KeyPoint(190, 80, 16));
-	//keypoints.push_back(KeyPoint(210, 80, 16));
+    keypoints.push_back(KeyPoint(150, 80, 16));
+    keypoints.push_back(KeyPoint(170, 80, 16));
+    keypoints.push_back(KeyPoint(190, 80, 16));
+	keypoints.push_back(KeyPoint(210, 80, 16));
 
-	//keypoints.push_back(KeyPoint(150, 100, 16));
+	keypoints.push_back(KeyPoint(150, 100, 16));
     keypoints.push_back(KeyPoint(170, 100, 16));
     keypoints.push_back(KeyPoint(190, 100, 16));
-	//keypoints.push_back(KeyPoint(210, 100, 16));
+	keypoints.push_back(KeyPoint(210, 100, 16));
 
-	//keypoints.push_back(KeyPoint(150, 120, 16));
+	keypoints.push_back(KeyPoint(150, 120, 16));
     keypoints.push_back(KeyPoint(170, 120, 16));
     keypoints.push_back(KeyPoint(190, 120, 16));
-	//keypoints.push_back(KeyPoint(210, 120, 16));
+	keypoints.push_back(KeyPoint(210, 120, 16));
 
-	//keypoints.push_back(KeyPoint(150, 140, 16));
+	keypoints.push_back(KeyPoint(150, 140, 16));
     keypoints.push_back(KeyPoint(170, 140, 16));
     keypoints.push_back(KeyPoint(190, 140, 16));
-	//keypoints.push_back(KeyPoint(210, 140, 16));
+	keypoints.push_back(KeyPoint(210, 140, 16));
 
-	//keypoints.push_back(KeyPoint(150, 160, 16));
+	keypoints.push_back(KeyPoint(150, 160, 16));
     keypoints.push_back(KeyPoint(170, 160, 16));
     keypoints.push_back(KeyPoint(190, 160, 16));
-	//keypoints.push_back(KeyPoint(210, 160, 16));
+	keypoints.push_back(KeyPoint(210, 160, 16));
 
-	//keypoints.push_back(KeyPoint(150, 180, 16));
+	keypoints.push_back(KeyPoint(150, 180, 16));
     keypoints.push_back(KeyPoint(170, 180, 16));
     keypoints.push_back(KeyPoint(190, 180, 16));
-	//keypoints.push_back(KeyPoint(210, 180, 16));
+	keypoints.push_back(KeyPoint(210, 180, 16));
 
-	//keypoints.push_back(KeyPoint(150, 200, 16));
+	keypoints.push_back(KeyPoint(150, 200, 16));
     keypoints.push_back(KeyPoint(170, 200, 16));
     keypoints.push_back(KeyPoint(190, 200, 16));
-	//keypoints.push_back(KeyPoint(210, 200, 16));
+	keypoints.push_back(KeyPoint(210, 200, 16));
 
-	//keypoints.push_back(KeyPoint(150, 200, 16));
+	keypoints.push_back(KeyPoint(150, 200, 16));
     keypoints.push_back(KeyPoint(170, 220, 16));
     keypoints.push_back(KeyPoint(190, 220, 16));
-	//keypoints.push_back(KeyPoint(210, 200, 16));
+	keypoints.push_back(KeyPoint(210, 200, 16));
 
 
 
 	// y range of x range
 	// 250 to 450 of 130 to 230
 
-	//keypoints.push_back(KeyPoint(130, 250, 16));
-    //keypoints.push_back(KeyPoint(155, 250, 16));
-    //keypoints.push_back(KeyPoint(180, 250, 16));
-	//keypoints.push_back(KeyPoint(205, 250, 16));
-	//keypoints.push_back(KeyPoint(230, 250, 16));
+	keypoints.push_back(KeyPoint(130, 250, 16));
+    keypoints.push_back(KeyPoint(155, 250, 16));
+    keypoints.push_back(KeyPoint(180, 250, 16));
+	keypoints.push_back(KeyPoint(205, 250, 16));
+	keypoints.push_back(KeyPoint(230, 250, 16));
 
-	//keypoints.push_back(KeyPoint(130, 275, 16));
+	keypoints.push_back(KeyPoint(130, 275, 16));
     keypoints.push_back(KeyPoint(155, 275, 16));
     keypoints.push_back(KeyPoint(180, 275, 16));
 	keypoints.push_back(KeyPoint(205, 275, 16));
-	//keypoints.push_back(KeyPoint(230, 275, 16));
+	keypoints.push_back(KeyPoint(230, 275, 16));
 
-	//keypoints.push_back(KeyPoint(130, 300, 16));
+	keypoints.push_back(KeyPoint(130, 300, 16));
     keypoints.push_back(KeyPoint(155, 300, 16));
     keypoints.push_back(KeyPoint(180, 300, 16));
 	keypoints.push_back(KeyPoint(205, 300, 16));
-	//keypoints.push_back(KeyPoint(230, 300, 16));
+	keypoints.push_back(KeyPoint(230, 300, 16));
 
-	//keypoints.push_back(KeyPoint(130, 325, 16));
+	keypoints.push_back(KeyPoint(130, 325, 16));
     keypoints.push_back(KeyPoint(155, 325, 16));
     keypoints.push_back(KeyPoint(180, 325, 16));
 	keypoints.push_back(KeyPoint(205, 325, 16));
-	//keypoints.push_back(KeyPoint(230, 325, 16));
+	keypoints.push_back(KeyPoint(230, 325, 16));
 
-	//keypoints.push_back(KeyPoint(130, 350, 16));
+	keypoints.push_back(KeyPoint(130, 350, 16));
     keypoints.push_back(KeyPoint(155, 350, 16));
     keypoints.push_back(KeyPoint(180, 350, 16));
 	keypoints.push_back(KeyPoint(205, 350, 16));
-	//keypoints.push_back(KeyPoint(230, 350, 16));
+	keypoints.push_back(KeyPoint(230, 350, 16));
 
-	//keypoints.push_back(KeyPoint(130, 375, 16));
+	keypoints.push_back(KeyPoint(130, 375, 16));
     keypoints.push_back(KeyPoint(155, 375, 16));
     keypoints.push_back(KeyPoint(180, 375, 16));
 	keypoints.push_back(KeyPoint(205, 375, 16));
-	//keypoints.push_back(KeyPoint(230, 375, 16));
+	keypoints.push_back(KeyPoint(230, 375, 16));
 
-	//keypoints.push_back(KeyPoint(130, 400, 16));
+	keypoints.push_back(KeyPoint(130, 400, 16));
     keypoints.push_back(KeyPoint(155, 400, 16));
     keypoints.push_back(KeyPoint(180, 400, 16));
 	keypoints.push_back(KeyPoint(205, 400, 16));
-	//keypoints.push_back(KeyPoint(230, 400, 16));
+	keypoints.push_back(KeyPoint(230, 400, 16));
 
-	//keypoints.push_back(KeyPoint(130, 425, 16));
+	keypoints.push_back(KeyPoint(130, 425, 16));
     keypoints.push_back(KeyPoint(155, 425, 16));
     keypoints.push_back(KeyPoint(180, 425, 16));
 	keypoints.push_back(KeyPoint(205, 425, 16));
-	//keypoints.push_back(KeyPoint(230, 425, 16));
+	keypoints.push_back(KeyPoint(230, 425, 16));
 	
 	return keypoints;
 }
@@ -168,25 +168,32 @@ static Mat extract_feats(Mat& im, vector<KeyPoint> keypoints)
     return descriptors.reshape(1, 1);
 }
 
-
-
-
-Mat BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
+Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 {
 	Mat descriptors;
-	int cluster_num = 30;
+	int cluster_num = 1000;
 
 	int i = 0;
+	int skipped = 0;
+
     vector<Mat>::iterator it;
 
 	vector<KeyPoint> keypoints = generate_keypoints_bow();
-	//vector<KeyPoint> keypoints2 = generate_keypoints_bow();
-
 
 	//SiftFeatureDetector detector;
-	//vector<KeyPoint> keypoints;
+	//vector<KeyPoint> keypoints2;
+
+	Mat l2;
 
 	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+
+		if ((*it).size().height < 540 || (*it).size().width < 360) {
+			skipped++;
+			i++;
+			continue;
+		}
+
+		l2.push_back(labels.row(i));
 
 		Mat resize_dest(540, 360, (*it).type());
 		resize(*it, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
@@ -195,8 +202,6 @@ Mat BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
 		cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
 
 		//detector.detect(convert_dest,keypoints);
-
-		cout << keypoints.size() << endl;
 
 		SiftDescriptorExtractor extractor;
 
@@ -220,10 +225,16 @@ Mat BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
 	BOWImgDescriptorExtractor bow_extractor(extractor, matcher);
 	bow_extractor.setVocabulary(vocab);
 
-	Mat bow_descriptors(train_imgs.size(), cluster_num, CV_32F);
+	Mat bow_descriptors(train_imgs.size() - skipped, cluster_num, CV_32F);
 
 	i = 0;
+	skipped = 0;
 	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+
+		if ((*it).size().height < 540 || (*it).size().width < 360) {
+			skipped++;
+			continue;
+		}
 
 		Mat bow_descriptor;
 
@@ -236,17 +247,26 @@ Mat BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
 		//detector.detect(convert_dest,keypoints2);
 
 		bow_extractor.compute(convert_dest, keypoints, bow_descriptor);
-		
+
 		bow_descriptor.copyTo(bow_descriptors.row(i));
 		
 		i++;
 	}
 
+	labels = l2;
+
+	return bow_descriptors;
+}
+
+
+
+void BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
+{
+	Mat bow_descriptors = extract_desc_bow(train_imgs, labels);
+
 	train_on_descriptors(bow_descriptors, labels);
 
 	cout << bow_descriptors.size() << endl;
-
-	return bow_descriptors;
 }
 
 
@@ -359,7 +379,7 @@ float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 
 float BeerClassifier::cross_validate_bow(vector<Mat> &train_imgs, Mat &labels)
 {
-	Mat descriptors = train_bow(train_imgs, labels);
+	Mat descriptors = extract_desc_bow(train_imgs, labels);
 
     Mat train_feats(descriptors.size().height - 1,
                     descriptors.size().width, descriptors.type());
@@ -368,7 +388,7 @@ float BeerClassifier::cross_validate_bow(vector<Mat> &train_imgs, Mat &labels)
     float correct = 0;
 
     // Cross validate by withholding a sample, 1 at a time then testing on it.
-    for (int i = 0; i < train_imgs.size(); i++) {
+    for (int i = 0; i < descriptors.size().height; i++) {
 
         // Create a new training Mats without the ith row.
         int skipped = 0;
@@ -390,7 +410,24 @@ float BeerClassifier::cross_validate_bow(vector<Mat> &train_imgs, Mat &labels)
         cout << correct << "/" << i + 1 << endl;
     }
 
-    return correct / train_imgs.size();
+    return correct / descriptors.size().height;
+}
+
+float BeerClassifier::test_bow(vector<Mat> &train_imgs, Mat &labels)
+{
+	Mat descriptors = extract_desc_bow(train_imgs, labels);
+
+    float correct = 0;
+
+    for (int i = 0; i < descriptors.size().height; i++) {
+
+        if (svm_.predict(descriptors.row(i)) == labels.at<int>(i, 0))
+            correct++;
+
+        cout << correct << "/" << i + 1 << endl;
+    }
+
+    return correct / descriptors.size().height;
 }
 
 #pragma mark serialization

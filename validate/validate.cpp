@@ -109,9 +109,12 @@ int main (int argc, char *argv[])
 	BeerClassifier classifier;
 
 	//cout << classifier.cross_validate_bow(images, cv_labels) << endl;
-	
-    classifier.train_bow(images, cv_labels);
-	classifier.save_with_bow("bottles.model", "vocab.yml");
+
+	classifier.load_with_bow("../trainer/build/bottles.model", "../trainer/build/vocab.yml");
+	classifier.test_bow(images, cv_labels);
+
+    //classifier.train_bow(images, cv_labels);
+	//classifier.save_with_bow("bottles.model", "vocab.yml");
 
 	return 0;
 }
