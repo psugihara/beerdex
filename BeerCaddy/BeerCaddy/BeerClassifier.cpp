@@ -213,6 +213,8 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 		descriptors.push_back(descriptor);
 	}
 
+	cout << skipped << endl;
+
 	BOWKMeansTrainer bow_trainer(cluster_num);
 
 	Mat vocab = bow_trainer.cluster(descriptors);
@@ -249,6 +251,7 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 		bow_extractor.compute(convert_dest, keypoints, bow_descriptor);
 
 		bow_descriptor.copyTo(bow_descriptors.row(i));
+		i++;
 	}
 
 	labels = l2;
