@@ -111,8 +111,6 @@ int main (int argc, char *argv[])
 	cout << classifier.cross_validate_bow(images, cv_labels) << endl;
     //classifier.train_bow(images, cv_labels);
 
-	cout << "testsadfasdfa" << endl;
-
 	//classifier.save_with_bow("bottles.model", "vocab.yml");
 
 	return 0;
