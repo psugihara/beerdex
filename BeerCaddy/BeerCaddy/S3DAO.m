@@ -13,7 +13,7 @@
 - (id)init
 {
     if ((self = [super init]) && self.s3 == nil) {
-        self.s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY_ID withSecretKey:SECRET_KEY];
+        _s3 = [[AmazonS3Client alloc] initWithAccessKey:ACCESS_KEY withSecretKey:SECRET_KEY];
         return self;
     }
     return nil;
@@ -23,23 +23,27 @@
 {
     NSData *imageData = UIImagePNGRepresentation(image);
 
+    NSString *fileName = [NSString stringWithFormat:@"%@.png", name];
+
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
+        NSLog(@"Uploading %@", fileName);
 
         // Upload image data.  Remember to set the content type.
-        S3PutObjectRequest *put = [[S3PutObjectRequest alloc] initWithKey:name
-                                                                  inBucket:PICTURE_BUCKET];
+        S3PutObjectRequest *put = [[S3PutObjectRequest alloc] initWithKey:fileName
+                                                                 inBucket:PICTURE_BUCKET];
         put.contentType = @"image/png";
         put.data        = imageData;
 
         // Put the image data into the specified s3 bucket and object.
-        S3PutObjectResponse *putObjectResponse = [self.s3 putObject:put];
+        S3PutObjectResponse *putObjectResponse = [_s3 putObject:put];
 
         dispatch_async(dispatch_get_main_queue(), ^{
 
             if (putObjectResponse.error != nil) {
                 NSLog(@"Error: %@", putObjectResponse.error);
             } else {
+                NSLog(@"Upload OK!");
                 // UPLOAD OK!
             }
 

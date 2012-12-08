@@ -9,7 +9,6 @@
 #import "MainViewController.h"
 
 @interface MainViewController ()
-
 @end
 
 @implementation MainViewController
@@ -23,33 +22,33 @@
         bottler.load([filePath UTF8String]);
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self startCameraControllerFromViewController:self
-                                    usingDelegate:self];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Flipside View
+#pragma mark - TagUpload View
 
-- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
+- (void)tagUploadViewControllerDidFinish:(TagUploadViewController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showAlternate"]) {
+    if ([[segue identifier] isEqualToString:@"tagCapture"]) {
         [[segue destinationViewController] setDelegate:self];
     }
 }
 
 #pragma mark - Camera
+
+- (IBAction)startCamera:(id)sender
+{
+    [self startCameraControllerFromViewController:self
+                                    usingDelegate:self];
+}
 
 - (BOOL)startCameraControllerFromViewController:(UIViewController*) controller
                                    usingDelegate:(id <UIImagePickerControllerDelegate,
@@ -87,8 +86,7 @@
 }
 
 // For responding to the user accepting a newly-captured picture or movie
-- (void)imagePickerController: (UIImagePickerController *) picker
- didFinishPickingMediaWithInfo: (NSDictionary *) info {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
 
     NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
     UIImage *originalImage, *editedImage, *imageToSave;
@@ -108,9 +106,8 @@
             imageToSave = originalImage;
         }
 
-	NSString *beer_name = [self labelImage:imageToSave];
+        NSString *beer_name = [self labelImage:imageToSave];
         NSString *message = [NSString stringWithFormat:@"I think that's a %@ bottle?", beer_name];
-
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Prediction!"
                                                         message:message
                                                        delegate:self
@@ -124,8 +121,9 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if (buttonIndex == 1)
-        [self performSegueWithIdentifier:@"showAlternate" sender: self];
+	if (buttonIndex == 1) {
+        [self performSegueWithIdentifier:@"tagCapture" sender: self];
+    }
 }
 
 #pragma mark Image recognition
@@ -134,6 +132,7 @@
 {
 	// Reformat image and classify.
 	cv::Mat img = [self cvMatFromUIImage:image];
+    _toTag = [self UIImageFromCVMat:bottler.convert(img)];
 	int label = bottler.label(img);
 
 	NSArray *beers = @[@"bud_light", @"budweiser", @"coors_light", @"corona",

@@ -19,7 +19,7 @@
 		A1919C1816615FBE00205609 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1716615FBE00205609 /* Default@2x.png */; };
 		A1919C1A16615FBE00205609 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1916615FBE00205609 /* Default-568h@2x.png */; };
 		A1919C1D16615FBE00205609 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1B16615FBE00205609 /* MainStoryboard.storyboard */; };
-		A1919C2316615FBE00205609 /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1919C2216615FBE00205609 /* FlipsideViewController.m */; };
+		A1919C2316615FBE00205609 /* TagUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1919C2216615FBE00205609 /* TagUploadViewController.m */; };
 		A1919C2B16615FBE00205609 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C2A16615FBE00205609 /* SenTestingKit.framework */; };
 		A1919C2C16615FBE00205609 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0316615FBE00205609 /* UIKit.framework */; };
 		A1919C2D16615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
@@ -73,8 +73,8 @@
 		A1919C1916615FBE00205609 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A1919C1C16615FBE00205609 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A1919C1E16615FBE00205609 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		A1919C2116615FBE00205609 /* FlipsideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
-		A1919C2216615FBE00205609 /* FlipsideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		A1919C2116615FBE00205609 /* TagUploadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagUploadViewController.h; sourceTree = "<group>"; };
+		A1919C2216615FBE00205609 /* TagUploadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagUploadViewController.m; sourceTree = "<group>"; };
 		A1919C2916615FBE00205609 /* BeerCaddyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerCaddyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1919C2A16615FBE00205609 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A1919C3216615FBE00205609 /* BeerCaddyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeerCaddyTests-Info.plist"; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 				A1919C481661931700205609 /* MainViewController.mm */,
 				A1F074B81671303200CECB4E /* S3DAO.h */,
 				A1F074B91671303200CECB4E /* S3DAO.m */,
-				A1919C2116615FBE00205609 /* FlipsideViewController.h */,
-				A1919C2216615FBE00205609 /* FlipsideViewController.m */,
+				A1919C2116615FBE00205609 /* TagUploadViewController.h */,
+				A1919C2216615FBE00205609 /* TagUploadViewController.m */,
 				A1919C4C1661AB0D00205609 /* BeerClassifier.h */,
 				A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */,
 				A13C810A1662C75200624C82 /* Beers.h */,
@@ -328,7 +328,7 @@
 			files = (
 				A1919C1016615FBE00205609 /* main.m in Sources */,
 				A1919C1416615FBE00205609 /* AppDelegate.m in Sources */,
-				A1919C2316615FBE00205609 /* FlipsideViewController.m in Sources */,
+				A1919C2316615FBE00205609 /* TagUploadViewController.m in Sources */,
 				A1919C491661931700205609 /* MainViewController.mm in Sources */,
 				A1919C4D1661AB0D00205609 /* BeerClassifier.cpp in Sources */,
 				A1F074BA1671303200CECB4E /* S3DAO.m in Sources */,

@@ -1,18 +1,18 @@
 //
-//  FlipsideViewController.m
+//  TagUploadViewController.m
 //  BeerCaddy
 //
 //  Created by Peter Sugihara on 11/24/12.
 //  Copyright (c) 2012 Peter Sugihara. All rights reserved.
 //
 
-#import "FlipsideViewController.h"
+#import "TagUploadViewController.h"
 
-@interface FlipsideViewController ()
+@interface TagUploadViewController ()
 @property (nonatomic, retain) NSArray *beers;
 @end
 
-@implementation FlipsideViewController
+@implementation TagUploadViewController
 
 - (void)viewDidLoad
 {
@@ -21,6 +21,8 @@
     _beers = @[@"bud_light", @"budweiser", @"coors_light", @"corona",
     @"heineken", @"magic_hat", @"rolling_rock", @"sierra_nevada",
     @"stella_artois", @"yuengling"];
+
+    _s3 = [[S3DAO alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,7 +35,7 @@
 
 - (IBAction)done:(id)sender
 {
-    [self.delegate flipsideViewControllerDidFinish:self];
+    [self.delegate tagUploadViewControllerDidFinish:self];
 }
 
 #pragma mark - UITableViewDataSource
@@ -58,13 +60,18 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thanks!"
-                                                        message:@"Its always good to learn something new."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-	[self.delegate flipsideViewControllerDidFinish:self];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thanks!"
+                                                    message:@"Its always good to learn something new."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+
+    double time = [[NSDate date] timeIntervalSince1970];
+    NSString *imageName = [NSString stringWithFormat:@"%@-%f", _beers[indexPath.row], time];
+    [_s3 uploadImage:_delegate.toTag withName:imageName];
+
+    [self.delegate tagUploadViewControllerDidFinish:self];
 }
 
 

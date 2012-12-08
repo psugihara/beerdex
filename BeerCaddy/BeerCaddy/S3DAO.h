@@ -13,9 +13,9 @@
 
 #import <AWSiOSSDK/S3/AmazonS3Client.h>
 
-#define ACCESS_KEY_ID @"someaccesskey"
-#define SECRET_KEY @"secret"
-#define PICTURE_BUCKET @"buck"
+#define ACCESS_KEY @"AKIAIGCU5NUUS3OSNVGA"
+#define SECRET_KEY @"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"
+#define PICTURE_BUCKET @"classified-beer"
 
 
 @interface S3DAO : NSObject

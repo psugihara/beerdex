@@ -1,5 +1,5 @@
 //
-//  FlipsideViewController.h
+//  TagUploadViewController.h
 //  BeerCaddy
 //
 //  Created by Peter Sugihara on 11/24/12.
@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "S3DAO.h"
 
-@class FlipsideViewController;
+@class TagUploadViewController;
 
-@protocol FlipsideViewControllerDelegate
-- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller;
+@protocol TagUploadViewControllerDelegate
+@property (nonatomic, retain) UIImage *toTag;
+- (void)tagUploadViewControllerDidFinish:(TagUploadViewController *)controller;
 @end
 
-@interface FlipsideViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TagUploadViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) id <FlipsideViewControllerDelegate> delegate;
+@property (nonatomic, retain) S3DAO *s3;
+@property (weak, nonatomic) id <TagUploadViewControllerDelegate> delegate;
 
 - (IBAction)done:(id)sender;
 
