@@ -91,10 +91,19 @@ int read_images(char *root, vector<Mat> &images, vector<int> &labels)
 
 int main (int argc, char *argv[])
 {
-	if (argc != 2) {
-		cerr << "usage: trainer <image-root>" << endl;
+	if (argc != 2 && argc != 4) {
+		cerr << "usage: trainer <image-root> [model-output vocab-output]" << endl;
 		return -1;
 	}
+
+    char *image_root = argv[1];
+    char *model_output = NULL;
+    char *vocab_output = NULL;
+
+    if (argc == 4) {
+        model_output = argv[2];
+        vocab_output = argv[3];
+    }
 
 	vector<Mat> images;
 	vector<int> labels;
@@ -108,17 +117,14 @@ int main (int argc, char *argv[])
 
 	BeerClassifier classifier;
 
-<<<<<<< HEAD
-	//cout << classifier.cross_validate_bow(images, cv_labels) << endl;
-	
-    classifier.train_bow(images, cv_labels);
-	classifier.save_with_bow("bottles.model", "vocab.yml");
-=======
-	cout << classifier.cross_validate_bow(images, cv_labels) << endl;
-    //classifier.train_bow(images, cv_labels);
-
-	//classifier.save_with_bow("bottles.model", "vocab.yml");
->>>>>>> e4bc7e52333c9bd29f16c60e380c7a2f24204e85
+    if (model_output) {
+        cout << "Creating model and vocab..." << endl;
+        classifier.train_bow(images, cv_labels);
+        classifier.save_with_bow(model_output, vocab_output);
+    } else {
+        cout << "Performing cross validation..." << endl;
+        cout << classifier.cross_validate_bow(images, cv_labels) << endl;
+	}
 
 	return 0;
 }

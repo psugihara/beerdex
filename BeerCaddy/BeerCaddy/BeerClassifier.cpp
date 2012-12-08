@@ -27,15 +27,14 @@ static vector<KeyPoint> generate_keypoints()
     keypoints.push_back(KeyPoint(210, 300, 16));
     keypoints.push_back(KeyPoint(210, 330, 16));
 
-	return keypoints;
-	
+	return keypoints;	
 }
 
 static vector<KeyPoint> generate_keypoints_bow()
 {
 	vector<KeyPoint> keypoints;
 
-	// this set of keypoints with 1000 clusters will return:
+	// This set of keypoints with 1000 clusters will return:
 	// 90% in cross validation using the lbw-a dataset
 
 	// y range of x range
@@ -80,8 +79,7 @@ static vector<KeyPoint> generate_keypoints_bow()
     keypoints.push_back(KeyPoint(170, 220, 16));
     keypoints.push_back(KeyPoint(190, 220, 16));
 	keypoints.push_back(KeyPoint(210, 200, 16));
-
-
+    
 
 	// y range of x range
 	// 250 to 450 of 130 to 230
@@ -153,14 +151,9 @@ static Mat extract_bow(Mat& im, vector<KeyPoint> keypoints, Mat& vocab)
     return bow_descriptor.reshape(1, 1);
 }
 
-static Mat extract_feats(Mat& im, vector<KeyPoint> keypoints)
+Mat BeerClassifier::extract_feats(Mat& im, vector<KeyPoint> keypoints)
 {
-	// Change image to desired format (540x360 CV_8UC3).
-    Mat resize_dest(540, 360, im.type());
-	resize(im, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
-
-    Mat convert_dest(540, 360, CV_8UC3);
-    cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
+    Mat convert_dest = convert(im);
 
 	SiftDescriptorExtractor extractor;
     Mat descriptors;
@@ -169,14 +162,25 @@ static Mat extract_feats(Mat& im, vector<KeyPoint> keypoints)
     return descriptors.reshape(1, 1);
 }
 
+Mat BeerClassifier::convert(Mat &image)
+{
+    // Change image to desired format (540x360 CV_8UC3).
+
+    Mat resize_dest(540, 360, image.type());
+    resize(image, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
+
+    Mat convert_dest(540, 360, CV_8UC3);
+    cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
+
+    return convert_dest;
+}
+
 Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 {
 	Mat descriptors;
 	int cluster_num = 1000;
 
-	int i = 0;
-	int skipped = 0;
-
+	int i;
     vector<Mat>::iterator it;
 
 	vector<KeyPoint> keypoints = generate_keypoints_bow();
@@ -186,21 +190,18 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 
 	Mat l2;
 
+    int skipped = 0;
+
 	for (i = 0, it = train_imgs.begin(); it < train_imgs.end(); it++, i++) {
 
 		if ((*it).size().height < 540 || (*it).size().width < 360) {
-			skipped++;
-			i++;
+            skipped++;
 			continue;
-		}
+        }
 
 		l2.push_back(labels.row(i));
-
-		Mat resize_dest(540, 360, (*it).type());
-		resize(*it, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
-
-		Mat convert_dest(540, 360, CV_8UC3);
-		cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
+        
+		Mat convert_dest = convert(*it);
 
 		//detector.detect(convert_dest,keypoints);
 
@@ -212,8 +213,6 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 
 		descriptors.push_back(descriptor);
 	}
-
-	cout << skipped << endl;
 
 	BOWKMeansTrainer bow_trainer(cluster_num);
 
@@ -229,29 +228,17 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 
 	Mat bow_descriptors(train_imgs.size() - skipped, cluster_num, CV_32F);
 
-	i = 0;
-	skipped = 0;
-	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+	for (it = train_imgs.begin(), i = 0; it < train_imgs.end(); it++, i++) {
 
-		if ((*it).size().height < 540 || (*it).size().width < 360) {
-			skipped++;
+		if ((*it).size().height < 540 || (*it).size().width < 360)
 			continue;
-		}
 
-		Mat bow_descriptor;
-
-		Mat resize_dest(540, 360, (*it).type());
-		resize(*it, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
-
-		Mat convert_dest(540, 360, CV_8UC3);
-		cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
+		Mat convert_dest = convert(*it);
 
 		//detector.detect(convert_dest,keypoints2);
-
+		Mat bow_descriptor;
 		bow_extractor.compute(convert_dest, keypoints, bow_descriptor);
-
 		bow_descriptor.copyTo(bow_descriptors.row(i));
-		i++;
 	}
 
 	labels = l2;
@@ -276,8 +263,8 @@ void BeerClassifier::train_on_descriptors(Mat &descriptors, Mat &labels)
     // Set up SVM's parameters
     CvSVMParams params;
     params.svm_type    = CvSVM::C_SVC;
-    params.kernel_type = CvSVM::LINEAR;
-//    params.degree = 2;
+    params.kernel_type = CvSVM::POLY;
+    params.degree = 2;
     params.term_crit   = cvTermCriteria(CV_TERMCRIT_ITER, 6000, 1e-6);
 
     svm_.train_auto(descriptors, labels, Mat(), Mat(), params, 24);
@@ -325,9 +312,9 @@ float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
 
 	vector<KeyPoint> keypoints = generate_keypoints();
 
-	int i = 0;
+	int i;
     vector<Mat>::iterator it;
-	for (it = train_imgs.begin(); it < train_imgs.end(); it++) {
+	for (it = train_imgs.begin(), i = 0; it < train_imgs.end(); it++, i++) {
 		Mat descriptor = extract_feats(*it, keypoints);
 		descriptor.copyTo(descriptors.row(i));
 		i++;
