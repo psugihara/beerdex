@@ -246,17 +246,12 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 	return bow_descriptors;
 }
 
-
-
 void BeerClassifier::train_bow(vector<Mat> &train_imgs, Mat &labels)
 {
 	Mat bow_descriptors = extract_desc_bow(train_imgs, labels);
 
 	train_on_descriptors(bow_descriptors, labels);
 }
-
-
-
 
 void BeerClassifier::train_on_descriptors(Mat &descriptors, Mat &labels)
 {
