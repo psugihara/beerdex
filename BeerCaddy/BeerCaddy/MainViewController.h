@@ -15,6 +15,7 @@
 }
 
 @property (nonatomic, retain) UIImage *toTag;
+@property (nonatomic, retain) NSString *prediction;
 @property (nonatomic, retain) S3DAO *s3;
 
 - (IBAction)startCamera:(id)sender;

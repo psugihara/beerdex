@@ -16,10 +16,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"bottles88"
-                                                                          ofType:@"model"];
-    if (filePath)
-        bottler.load([filePath UTF8String]);
+
+    _s3 = [[S3DAO alloc] init];
+
+    NSString *modelPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"model"
+                                                                           ofType:@"yml"];
+    NSString *vocabPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"vocab"
+                                                                           ofType:@"yml"];
+    if (modelPath && vocabPath)
+        bottler.load_with_bow([modelPath UTF8String], [vocabPath UTF8String]);
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,7 +77,7 @@
 
     cameraUI.delegate = delegate;
 
-    UIImageView *bottleOverlay = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlay.png"]];
+    UIImageView *bottleOverlay = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"beerbox.png"]];
     bottleOverlay.frame = CGRectMake(0, 0, bottleOverlay.image.size.width, bottleOverlay.image.size.height);
     cameraUI.cameraOverlayView = bottleOverlay;
 
@@ -106,8 +111,8 @@
             imageToSave = originalImage;
         }
 
-        NSString *beer_name = [self labelImage:imageToSave];
-        NSString *message = [NSString stringWithFormat:@"I think that's a %@ bottle?", beer_name];
+        _prediction = [self labelImage:imageToSave];
+        NSString *message = [NSString stringWithFormat:@"I think that's a %@ bottle?", _prediction];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Prediction!"
                                                         message:message
                                                        delegate:self
@@ -121,7 +126,9 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if (buttonIndex == 1) {
+	if (buttonIndex == 0) { // correct
+        [_s3 uploadImage:_toTag withName:_prediction];
+    } else if (buttonIndex == 1) { // incorrect
         [self performSegueWithIdentifier:@"tagCapture" sender: self];
     }
 }
@@ -132,8 +139,14 @@
 {
 	// Reformat image and classify.
 	cv::Mat img = [self cvMatFromUIImage:image];
+
+    std::cout << img.size() << std::endl;
     _toTag = [self UIImageFromCVMat:bottler.convert(img)];
-	int label = bottler.label(img);
+
+
+    UIImageWriteToSavedPhotosAlbum(_toTag, nil, nil, nil);
+
+	int label = bottler.label_bow(img);
 
 	NSArray *beers = @[@"bud_light", @"budweiser", @"coors_light", @"corona",
 	@"heineken", @"magic_hat", @"rolling_rock", @"sierra_nevada",
@@ -196,7 +209,6 @@
 					    false,                                      //should interpolate
 					    kCGRenderingIntentDefault                   //intent
 					    );
-
 
 	// Getting UIImage from CGImage
 	UIImage *finalImage = [UIImage imageWithCGImage:imageRef];

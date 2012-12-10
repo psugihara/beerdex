@@ -26,123 +26,26 @@ static vector<KeyPoint> generate_keypoints()
     keypoints.push_back(KeyPoint(210, 300, 16));
     keypoints.push_back(KeyPoint(210, 330, 16));
 
-	return keypoints;	
+	return keypoints;
 }
 
 static vector<KeyPoint> generate_keypoints_bow()
 {
 	vector<KeyPoint> keypoints;
 
-    for (int i = 117 + 8; i < 117 + 124; i += 16) {
-        for (int j = 72 + 8; j < 72 + 394; j += 16) {
-            keypoints.push_back(KeyPoint(i, j, 16));
+    int grid_size = 8;
+
+    for (int i = 115 + grid_size/2; i < 115 + 130; i += grid_size) {
+        for (int j = 60 + grid_size/2; j < 60 + 360; j += grid_size) {
+            keypoints.push_back(KeyPoint(i, j, grid_size));
         }
     }
-
-	// This set of keypoints with 1000 clusters will return:
-	// 90% in cross validation using the lbw-a dataset
-
-	// y range of x range
-	// 80 to 220 of 150 to 210
-
-//    keypoints.push_back(KeyPoint(150, 80, 16));
-//    keypoints.push_back(KeyPoint(170, 80, 16));
-//    keypoints.push_back(KeyPoint(190, 80, 16));
-//	keypoints.push_back(KeyPoint(210, 80, 16));
-//
-//	keypoints.push_back(KeyPoint(150, 100, 16));
-//    keypoints.push_back(KeyPoint(170, 100, 16));
-//    keypoints.push_back(KeyPoint(190, 100, 16));
-//	keypoints.push_back(KeyPoint(210, 100, 16));
-//
-//	keypoints.push_back(KeyPoint(150, 120, 16));
-//    keypoints.push_back(KeyPoint(170, 120, 16));
-//    keypoints.push_back(KeyPoint(190, 120, 16));
-//	keypoints.push_back(KeyPoint(210, 120, 16));
-//
-//	keypoints.push_back(KeyPoint(150, 140, 16));
-//    keypoints.push_back(KeyPoint(170, 140, 16));
-//    keypoints.push_back(KeyPoint(190, 140, 16));
-//	keypoints.push_back(KeyPoint(210, 140, 16));
-//
-//	keypoints.push_back(KeyPoint(150, 160, 16));
-//    keypoints.push_back(KeyPoint(170, 160, 16));
-//    keypoints.push_back(KeyPoint(190, 160, 16));
-//	keypoints.push_back(KeyPoint(210, 160, 16));
-//
-//	keypoints.push_back(KeyPoint(150, 180, 16));
-//    keypoints.push_back(KeyPoint(170, 180, 16));
-//    keypoints.push_back(KeyPoint(190, 180, 16));
-//	keypoints.push_back(KeyPoint(210, 180, 16));
-//
-//	keypoints.push_back(KeyPoint(150, 200, 16));
-//    keypoints.push_back(KeyPoint(170, 200, 16));
-//    keypoints.push_back(KeyPoint(190, 200, 16));
-//	keypoints.push_back(KeyPoint(210, 200, 16));
-//
-//	keypoints.push_back(KeyPoint(150, 200, 16));
-//    keypoints.push_back(KeyPoint(170, 220, 16));
-//    keypoints.push_back(KeyPoint(190, 220, 16));
-//	keypoints.push_back(KeyPoint(210, 200, 16));
-
-
-	// y range of x range
-	// 250 to 450 of 130 to 230
-
-//	keypoints.push_back(KeyPoint(130, 250, 16));
-//    keypoints.push_back(KeyPoint(155, 250, 16));
-//    keypoints.push_back(KeyPoint(180, 250, 16));
-//	keypoints.push_back(KeyPoint(205, 250, 16));
-//	keypoints.push_back(KeyPoint(230, 250, 16));
-//
-//	keypoints.push_back(KeyPoint(130, 275, 16));
-//    keypoints.push_back(KeyPoint(155, 275, 16));
-//    keypoints.push_back(KeyPoint(180, 275, 16));
-//	keypoints.push_back(KeyPoint(205, 275, 16));
-//	keypoints.push_back(KeyPoint(230, 275, 16));
-//
-//	keypoints.push_back(KeyPoint(130, 300, 16));
-//    keypoints.push_back(KeyPoint(155, 300, 16));
-//    keypoints.push_back(KeyPoint(180, 300, 16));
-//	keypoints.push_back(KeyPoint(205, 300, 16));
-//	keypoints.push_back(KeyPoint(230, 300, 16));
-//
-//	keypoints.push_back(KeyPoint(130, 325, 16));
-//    keypoints.push_back(KeyPoint(155, 325, 16));
-//    keypoints.push_back(KeyPoint(180, 325, 16));
-//	keypoints.push_back(KeyPoint(205, 325, 16));
-//	keypoints.push_back(KeyPoint(230, 325, 16));
-//
-//	keypoints.push_back(KeyPoint(130, 350, 16));
-//    keypoints.push_back(KeyPoint(155, 350, 16));
-//    keypoints.push_back(KeyPoint(180, 350, 16));
-//	keypoints.push_back(KeyPoint(205, 350, 16));
-//	keypoints.push_back(KeyPoint(230, 350, 16));
-//
-//	keypoints.push_back(KeyPoint(130, 375, 16));
-//    keypoints.push_back(KeyPoint(155, 375, 16));
-//    keypoints.push_back(KeyPoint(180, 375, 16));
-//	keypoints.push_back(KeyPoint(205, 375, 16));
-//	keypoints.push_back(KeyPoint(230, 375, 16));
-//
-//	keypoints.push_back(KeyPoint(130, 400, 16));
-//    keypoints.push_back(KeyPoint(155, 400, 16));
-//    keypoints.push_back(KeyPoint(180, 400, 16));
-//	keypoints.push_back(KeyPoint(205, 400, 16));
-//	keypoints.push_back(KeyPoint(230, 400, 16));
-//
-//	keypoints.push_back(KeyPoint(130, 425, 16));
-//    keypoints.push_back(KeyPoint(155, 425, 16));
-//    keypoints.push_back(KeyPoint(180, 425, 16));
-//	keypoints.push_back(KeyPoint(205, 425, 16));
-//	keypoints.push_back(KeyPoint(230, 425, 16));
 
 	return keypoints;
 }
 
 static Mat extract_bow(Mat& im, vector<KeyPoint>& keypoints, Mat& vocab)
 {
-
 	SiftDescriptorExtractor *extractor = new SiftDescriptorExtractor();
 	FlannBasedMatcher *matcher = new FlannBasedMatcher();
 
@@ -169,12 +72,12 @@ Mat BeerClassifier::extract_feats(Mat& im, vector<KeyPoint> keypoints)
 
 Mat BeerClassifier::convert(Mat &image)
 {
-    // Change image to desired format (540x360 CV_8UC3).
+    // Change image to desired format (480x360 CV_8UC3).
 
-    Mat resize_dest(540, 360, image.type());
+    Mat resize_dest(480, 360, image.type());
     resize(image, resize_dest, resize_dest.size(), 0, 0, CV_INTER_AREA);
 
-    Mat convert_dest(540, 360, CV_8UC3);
+    Mat convert_dest(480, 360, CV_8UC3);
     cvtColor(resize_dest, convert_dest, CV_BGRA2BGR);
 
     return convert_dest;
@@ -183,7 +86,7 @@ Mat BeerClassifier::convert(Mat &image)
 Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 {
 	Mat descriptors;
-	int cluster_num = 1000;
+	int k = 2800;
 
 	int i;
     vector<Mat>::iterator it;
@@ -199,7 +102,7 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 
 	for (i = 0, it = train_imgs.begin(); it < train_imgs.end(); it++, i++) {
 
-		if ((*it).size().height < 540 || (*it).size().width < 360) {
+		if ((*it).size().height < 480 || (*it).size().width < 360) {
             skipped++;
 			continue;
         }
@@ -219,7 +122,7 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 		descriptors.push_back(descriptor);
 	}
 
-	BOWKMeansTrainer bow_trainer(cluster_num);
+	BOWKMeansTrainer bow_trainer(k);
 
 	Mat vocab = bow_trainer.cluster(descriptors);
 
@@ -231,11 +134,11 @@ Mat BeerClassifier::extract_desc_bow(vector<Mat> &train_imgs, Mat &labels)
 	BOWImgDescriptorExtractor bow_extractor(extractor, matcher);
 	bow_extractor.setVocabulary(vocab);
 
-	Mat bow_descriptors(train_imgs.size() - skipped, cluster_num, CV_32F);
+	Mat bow_descriptors(train_imgs.size() - skipped, k, CV_32F);
 
 	for (it = train_imgs.begin(), i = 0; it < train_imgs.end(); it++, i++) {
 
-		if ((*it).size().height < 540 || (*it).size().width < 360)
+		if ((*it).size().height < 480 || (*it).size().width < 360)
 			continue;
 
 		Mat convert_dest = convert(*it);
@@ -304,24 +207,9 @@ int BeerClassifier::label_bow(Mat &sample_image)
 
 	CvMat feats = extract_bow(converted_image, keypoints, vocab_);
 
-	cout << "feats " << feats.height << " " << feats.width << endl;
-
-
-	Mat results;
-
-    int res =  svm_.predict(&feats, &results);
-
-	cout << results << endl;
-
-	//cout << "res " << results.height << " " << results.width << endl;
-
-	//cvmGet(M,i,j)
-
-	//cout << cvmGet(&results,0,0) << endl;
+    int res =  svm_.predict(&feats);
 	
 	return res;
-
-
 }
 
 float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)

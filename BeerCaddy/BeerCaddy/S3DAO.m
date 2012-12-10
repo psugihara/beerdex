@@ -8,8 +8,6 @@
 
 #import "S3DAO.h"
 
-#define COMPRESSION .5 // 0.0 is most compressed, 1.0 is uncompressed
-
 @implementation S3DAO
 
 - (id)init
@@ -23,7 +21,7 @@
 
 - (void)uploadImage:(UIImage *)image withName:(NSString *)name
 {
-    NSData *imageData = UIImageJPEGRepresentation(image, COMPRESSION);
+    NSData *imageData = UIImageJPEGRepresentation(image, IMAGE_COMPRESSION);
 
     NSString *fileName = [NSString stringWithFormat:@"%@.jpg", name];
 
@@ -51,6 +49,44 @@
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         });
     });
+}
+
+- (void)downloadFile:(NSString *)name toPath:(NSString *)path
+{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        NSLog(@"Fetching %@", MODEL_FILE);
+
+        // Upload image data.  Remember to set the content type.
+        S3GetObjectRequest *get = [[S3GetObjectRequest alloc] initWithKey:name
+                                                               withBucket:PICTURE_BUCKET];
+
+        // Put the image data into the specified s3 bucket and object.
+        S3GetObjectResponse *getObjectResponse = [_s3 getObject:get];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            if (getObjectResponse.error != nil) {
+                NSLog(@"Error: %@", getObjectResponse.error);
+            } else {
+                [getObjectResponse setOutputStream:[NSOutputStream outputStreamToFileAtPath:path append:NO]];
+                NSLog(@"Download OK!");
+            }
+
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        });
+    });
+}
+
+- (void)refreshModel
+{
+    NSString *modelPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"model"
+                                                                           ofType:@"yml"];
+    [self downloadFile:@"model.yml" toPath:modelPath];
+
+    NSString *vocabPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"vocab"
+                                                                           ofType:@"yml"];
+    [self downloadFile:@"vocab.yml" toPath:vocabPath];
 }
 
 @end
