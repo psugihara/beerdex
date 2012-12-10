@@ -135,7 +135,7 @@ static vector<KeyPoint> generate_keypoints_bow()
 	return keypoints;
 }
 
-static Mat extract_bow(Mat& im, vector<KeyPoint> keypoints, Mat& vocab)
+static Mat extract_bow(Mat& im, vector<KeyPoint>& keypoints, Mat& vocab)
 {
 
 	SiftDescriptorExtractor *extractor = new SiftDescriptorExtractor();
@@ -300,8 +300,28 @@ int BeerClassifier::label_bow(Mat &sample_image)
 {
 	vector<KeyPoint> keypoints = generate_keypoints_bow();
 
-    CvMat feats = extract_bow(sample_image, keypoints, vocab_);
-    return svm_.predict(&feats);
+	Mat converted_image = convert(sample_image);
+
+	CvMat feats = extract_bow(converted_image, keypoints, vocab_);
+
+	cout << "feats " << feats.height << " " << feats.width << endl;
+
+
+	Mat results;
+
+    int res =  svm_.predict(&feats, &results);
+
+	cout << results << endl;
+
+	//cout << "res " << results.height << " " << results.width << endl;
+
+	//cvmGet(M,i,j)
+
+	//cout << cvmGet(&results,0,0) << endl;
+	
+	return res;
+
+
 }
 
 float BeerClassifier::cross_validate(vector<Mat> &train_imgs, Mat &labels)
@@ -420,10 +440,12 @@ void BeerClassifier::save_with_bow(const char *path_model, const char *path_voca
 {
     svm_.save(path_model);
 	FileStorage fs(path_vocab, FileStorage::WRITE);
+	fs << "mtx" << vocab_;
 }
 
 void BeerClassifier::load_with_bow(const char *path_model, const char *path_vocab)
 {
     svm_.load(path_model);
 	FileStorage fs(path_vocab, FileStorage::READ);
+	fs["mtx"] >> vocab_;
 }
