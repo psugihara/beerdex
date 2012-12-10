@@ -4,7 +4,9 @@
 # get_pics.py
 #
 # This program fetches images that match a query string provided on the
-# command line.
+# command line. Each time this program is run, it makes 10 calls to Google's
+# Custom Search API. The current limit is 100 calls per developer per day,
+# so only run this program 10 times per day max.
 #
 # Created by Peter Sugihara
 ###############################################################################
