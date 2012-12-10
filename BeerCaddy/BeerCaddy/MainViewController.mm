@@ -139,12 +139,7 @@
 {
 	// Reformat image and classify.
 	cv::Mat img = [self cvMatFromUIImage:image];
-
-    std::cout << img.size() << std::endl;
     _toTag = [self UIImageFromCVMat:bottler.convert(img)];
-
-
-    UIImageWriteToSavedPhotosAlbum(_toTag, nil, nil, nil);
 
 	int label = bottler.label_bow(img);
 
