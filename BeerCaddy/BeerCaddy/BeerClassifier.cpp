@@ -9,7 +9,6 @@
 #include "BeerClassifier.h"
 
 #define FRAMES 8
-#define BOW_FRAMES 35
 
 
 using namespace std;
@@ -34,104 +33,110 @@ static vector<KeyPoint> generate_keypoints_bow()
 {
 	vector<KeyPoint> keypoints;
 
+    for (int i = 117 + 8; i < 117 + 124; i += 16) {
+        for (int j = 72 + 8; j < 72 + 394; j += 16) {
+            keypoints.push_back(KeyPoint(i, j, 16));
+        }
+    }
+
 	// This set of keypoints with 1000 clusters will return:
 	// 90% in cross validation using the lbw-a dataset
 
 	// y range of x range
 	// 80 to 220 of 150 to 210
 
-    keypoints.push_back(KeyPoint(150, 80, 16));
-    keypoints.push_back(KeyPoint(170, 80, 16));
-    keypoints.push_back(KeyPoint(190, 80, 16));
-	keypoints.push_back(KeyPoint(210, 80, 16));
+//    keypoints.push_back(KeyPoint(150, 80, 16));
+//    keypoints.push_back(KeyPoint(170, 80, 16));
+//    keypoints.push_back(KeyPoint(190, 80, 16));
+//	keypoints.push_back(KeyPoint(210, 80, 16));
+//
+//	keypoints.push_back(KeyPoint(150, 100, 16));
+//    keypoints.push_back(KeyPoint(170, 100, 16));
+//    keypoints.push_back(KeyPoint(190, 100, 16));
+//	keypoints.push_back(KeyPoint(210, 100, 16));
+//
+//	keypoints.push_back(KeyPoint(150, 120, 16));
+//    keypoints.push_back(KeyPoint(170, 120, 16));
+//    keypoints.push_back(KeyPoint(190, 120, 16));
+//	keypoints.push_back(KeyPoint(210, 120, 16));
+//
+//	keypoints.push_back(KeyPoint(150, 140, 16));
+//    keypoints.push_back(KeyPoint(170, 140, 16));
+//    keypoints.push_back(KeyPoint(190, 140, 16));
+//	keypoints.push_back(KeyPoint(210, 140, 16));
+//
+//	keypoints.push_back(KeyPoint(150, 160, 16));
+//    keypoints.push_back(KeyPoint(170, 160, 16));
+//    keypoints.push_back(KeyPoint(190, 160, 16));
+//	keypoints.push_back(KeyPoint(210, 160, 16));
+//
+//	keypoints.push_back(KeyPoint(150, 180, 16));
+//    keypoints.push_back(KeyPoint(170, 180, 16));
+//    keypoints.push_back(KeyPoint(190, 180, 16));
+//	keypoints.push_back(KeyPoint(210, 180, 16));
+//
+//	keypoints.push_back(KeyPoint(150, 200, 16));
+//    keypoints.push_back(KeyPoint(170, 200, 16));
+//    keypoints.push_back(KeyPoint(190, 200, 16));
+//	keypoints.push_back(KeyPoint(210, 200, 16));
+//
+//	keypoints.push_back(KeyPoint(150, 200, 16));
+//    keypoints.push_back(KeyPoint(170, 220, 16));
+//    keypoints.push_back(KeyPoint(190, 220, 16));
+//	keypoints.push_back(KeyPoint(210, 200, 16));
 
-	keypoints.push_back(KeyPoint(150, 100, 16));
-    keypoints.push_back(KeyPoint(170, 100, 16));
-    keypoints.push_back(KeyPoint(190, 100, 16));
-	keypoints.push_back(KeyPoint(210, 100, 16));
-
-	keypoints.push_back(KeyPoint(150, 120, 16));
-    keypoints.push_back(KeyPoint(170, 120, 16));
-    keypoints.push_back(KeyPoint(190, 120, 16));
-	keypoints.push_back(KeyPoint(210, 120, 16));
-
-	keypoints.push_back(KeyPoint(150, 140, 16));
-    keypoints.push_back(KeyPoint(170, 140, 16));
-    keypoints.push_back(KeyPoint(190, 140, 16));
-	keypoints.push_back(KeyPoint(210, 140, 16));
-
-	keypoints.push_back(KeyPoint(150, 160, 16));
-    keypoints.push_back(KeyPoint(170, 160, 16));
-    keypoints.push_back(KeyPoint(190, 160, 16));
-	keypoints.push_back(KeyPoint(210, 160, 16));
-
-	keypoints.push_back(KeyPoint(150, 180, 16));
-    keypoints.push_back(KeyPoint(170, 180, 16));
-    keypoints.push_back(KeyPoint(190, 180, 16));
-	keypoints.push_back(KeyPoint(210, 180, 16));
-
-	keypoints.push_back(KeyPoint(150, 200, 16));
-    keypoints.push_back(KeyPoint(170, 200, 16));
-    keypoints.push_back(KeyPoint(190, 200, 16));
-	keypoints.push_back(KeyPoint(210, 200, 16));
-
-	keypoints.push_back(KeyPoint(150, 200, 16));
-    keypoints.push_back(KeyPoint(170, 220, 16));
-    keypoints.push_back(KeyPoint(190, 220, 16));
-	keypoints.push_back(KeyPoint(210, 200, 16));
-    
 
 	// y range of x range
 	// 250 to 450 of 130 to 230
 
-	keypoints.push_back(KeyPoint(130, 250, 16));
-    keypoints.push_back(KeyPoint(155, 250, 16));
-    keypoints.push_back(KeyPoint(180, 250, 16));
-	keypoints.push_back(KeyPoint(205, 250, 16));
-	keypoints.push_back(KeyPoint(230, 250, 16));
+//	keypoints.push_back(KeyPoint(130, 250, 16));
+//    keypoints.push_back(KeyPoint(155, 250, 16));
+//    keypoints.push_back(KeyPoint(180, 250, 16));
+//	keypoints.push_back(KeyPoint(205, 250, 16));
+//	keypoints.push_back(KeyPoint(230, 250, 16));
+//
+//	keypoints.push_back(KeyPoint(130, 275, 16));
+//    keypoints.push_back(KeyPoint(155, 275, 16));
+//    keypoints.push_back(KeyPoint(180, 275, 16));
+//	keypoints.push_back(KeyPoint(205, 275, 16));
+//	keypoints.push_back(KeyPoint(230, 275, 16));
+//
+//	keypoints.push_back(KeyPoint(130, 300, 16));
+//    keypoints.push_back(KeyPoint(155, 300, 16));
+//    keypoints.push_back(KeyPoint(180, 300, 16));
+//	keypoints.push_back(KeyPoint(205, 300, 16));
+//	keypoints.push_back(KeyPoint(230, 300, 16));
+//
+//	keypoints.push_back(KeyPoint(130, 325, 16));
+//    keypoints.push_back(KeyPoint(155, 325, 16));
+//    keypoints.push_back(KeyPoint(180, 325, 16));
+//	keypoints.push_back(KeyPoint(205, 325, 16));
+//	keypoints.push_back(KeyPoint(230, 325, 16));
+//
+//	keypoints.push_back(KeyPoint(130, 350, 16));
+//    keypoints.push_back(KeyPoint(155, 350, 16));
+//    keypoints.push_back(KeyPoint(180, 350, 16));
+//	keypoints.push_back(KeyPoint(205, 350, 16));
+//	keypoints.push_back(KeyPoint(230, 350, 16));
+//
+//	keypoints.push_back(KeyPoint(130, 375, 16));
+//    keypoints.push_back(KeyPoint(155, 375, 16));
+//    keypoints.push_back(KeyPoint(180, 375, 16));
+//	keypoints.push_back(KeyPoint(205, 375, 16));
+//	keypoints.push_back(KeyPoint(230, 375, 16));
+//
+//	keypoints.push_back(KeyPoint(130, 400, 16));
+//    keypoints.push_back(KeyPoint(155, 400, 16));
+//    keypoints.push_back(KeyPoint(180, 400, 16));
+//	keypoints.push_back(KeyPoint(205, 400, 16));
+//	keypoints.push_back(KeyPoint(230, 400, 16));
+//
+//	keypoints.push_back(KeyPoint(130, 425, 16));
+//    keypoints.push_back(KeyPoint(155, 425, 16));
+//    keypoints.push_back(KeyPoint(180, 425, 16));
+//	keypoints.push_back(KeyPoint(205, 425, 16));
+//	keypoints.push_back(KeyPoint(230, 425, 16));
 
-	keypoints.push_back(KeyPoint(130, 275, 16));
-    keypoints.push_back(KeyPoint(155, 275, 16));
-    keypoints.push_back(KeyPoint(180, 275, 16));
-	keypoints.push_back(KeyPoint(205, 275, 16));
-	keypoints.push_back(KeyPoint(230, 275, 16));
-
-	keypoints.push_back(KeyPoint(130, 300, 16));
-    keypoints.push_back(KeyPoint(155, 300, 16));
-    keypoints.push_back(KeyPoint(180, 300, 16));
-	keypoints.push_back(KeyPoint(205, 300, 16));
-	keypoints.push_back(KeyPoint(230, 300, 16));
-
-	keypoints.push_back(KeyPoint(130, 325, 16));
-    keypoints.push_back(KeyPoint(155, 325, 16));
-    keypoints.push_back(KeyPoint(180, 325, 16));
-	keypoints.push_back(KeyPoint(205, 325, 16));
-	keypoints.push_back(KeyPoint(230, 325, 16));
-
-	keypoints.push_back(KeyPoint(130, 350, 16));
-    keypoints.push_back(KeyPoint(155, 350, 16));
-    keypoints.push_back(KeyPoint(180, 350, 16));
-	keypoints.push_back(KeyPoint(205, 350, 16));
-	keypoints.push_back(KeyPoint(230, 350, 16));
-
-	keypoints.push_back(KeyPoint(130, 375, 16));
-    keypoints.push_back(KeyPoint(155, 375, 16));
-    keypoints.push_back(KeyPoint(180, 375, 16));
-	keypoints.push_back(KeyPoint(205, 375, 16));
-	keypoints.push_back(KeyPoint(230, 375, 16));
-
-	keypoints.push_back(KeyPoint(130, 400, 16));
-    keypoints.push_back(KeyPoint(155, 400, 16));
-    keypoints.push_back(KeyPoint(180, 400, 16));
-	keypoints.push_back(KeyPoint(205, 400, 16));
-	keypoints.push_back(KeyPoint(230, 400, 16));
-
-	keypoints.push_back(KeyPoint(130, 425, 16));
-    keypoints.push_back(KeyPoint(155, 425, 16));
-    keypoints.push_back(KeyPoint(180, 425, 16));
-	keypoints.push_back(KeyPoint(205, 425, 16));
-	keypoints.push_back(KeyPoint(230, 425, 16));
-	
 	return keypoints;
 }
 
