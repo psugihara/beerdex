@@ -23,6 +23,8 @@
                                                                            ofType:@"yml"];
     if (modelPath && vocabPath)
         bottler.load_with_bow([modelPath UTF8String], [vocabPath UTF8String]);
+
+    [_s3 refreshModel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,7 +127,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if (buttonIndex == 0) { // correct
-        [_s3 uploadImage:_toTag withName:_prediction];
+        [_s3 uploadImage:_toTag withName:[NSString stringWithFormat:@"%@-t", _prediction]];
     } else if (buttonIndex == 1) { // incorrect
         [self performSegueWithIdentifier:@"tagCapture" sender: self];
     }

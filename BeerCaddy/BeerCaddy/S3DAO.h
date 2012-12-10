@@ -18,8 +18,6 @@
 
 #define IMAGE_COMPRESSION .5 // 0.0 is most compressed, 1.0 is uncompressed
 
-#define MODEL_FILE @"bottles.model"
-
 @interface S3DAO : NSObject
 
 @property (nonatomic, retain) AmazonS3Client *s3;

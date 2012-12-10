@@ -15,7 +15,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
     _beers = @[@"bud_light", @"budweiser", @"coors_light", @"corona",
     @"heineken", @"magic_hat", @"rolling_rock", @"sierra_nevada",
     @"stella_artois", @"yuengling"];
@@ -56,6 +56,7 @@
 }
 
 #pragma mark - UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Thanks!"
@@ -65,8 +66,7 @@
                                           otherButtonTitles:nil];
     [alert show];
 
-    [_s3 uploadImage:_delegate.toTag withName:_beers[indexPath.row]];
-
+    [_s3 uploadImage:_delegate.toTag withName:[NSString stringWithFormat:@"%@-f", _beers[indexPath.row]]];
     [self.delegate tagUploadViewControllerDidFinish:self];
 }
 

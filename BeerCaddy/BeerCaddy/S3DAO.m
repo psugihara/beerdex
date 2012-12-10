@@ -54,7 +54,7 @@
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
-        NSLog(@"Fetching %@", MODEL_FILE);
+        NSLog(@"Fetching %@", path);
 
         // Upload image data.  Remember to set the content type.
         S3GetObjectRequest *get = [[S3GetObjectRequest alloc] initWithKey:name
