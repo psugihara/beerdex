@@ -21,7 +21,8 @@
 {
     NSData *imageData = UIImageJPEGRepresentation(image, IMAGE_COMPRESSION);
 
-    NSString *fileName = [NSString stringWithFormat:@"%@.jpg", name];
+    double time = [[NSDate date] timeIntervalSince1970];
+    NSString *fileName = [NSString stringWithFormat:@"%@-%f.jpg", name, time];
 
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{

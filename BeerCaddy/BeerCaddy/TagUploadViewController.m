@@ -65,9 +65,7 @@
                                           otherButtonTitles:nil];
     [alert show];
 
-    double time = [[NSDate date] timeIntervalSince1970];
-    NSString *imageName = [NSString stringWithFormat:@"%@-%f", _beers[indexPath.row], time];
-    [_s3 uploadImage:_delegate.toTag withName:imageName];
+    [_s3 uploadImage:_delegate.toTag withName:_beers[indexPath.row]];
 
     [self.delegate tagUploadViewControllerDidFinish:self];
 }
