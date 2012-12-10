@@ -1,6 +1,7 @@
+//  Ben Klingher, Peter Sugihara
 //
-//  BeerClassifier.h
-//  BeerCaddy
+//  header file for the BeerClassifier class
+//  used for training, labeling and saving an SVM on beer images
 //
 //  Created by Peter Sugihara on 11/24/12.
 //  Copyright (c) 2012 Peter Sugihara. All rights reserved.

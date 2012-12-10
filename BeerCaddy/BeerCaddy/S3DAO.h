@@ -1,6 +1,4 @@
-//
-//  S3DAO.h
-//  BeerCaddy
+//  Ben Klingher, Peter Sugihara
 //
 //  This object manages transactions with S3. Its main function is to facilitate
 //  uploading images and getting a new classifier model.
