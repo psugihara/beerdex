@@ -8,6 +8,8 @@
 
 #import "S3DAO.h"
 
+#define COMPRESSION .5 // 0.0 is most compressed, 1.0 is uncompressed
+
 @implementation S3DAO
 
 - (id)init
@@ -21,9 +23,9 @@
 
 - (void)uploadImage:(UIImage *)image withName:(NSString *)name
 {
-    NSData *imageData = UIImagePNGRepresentation(image);
+    NSData *imageData = UIImageJPEGRepresentation(image, COMPRESSION);
 
-    NSString *fileName = [NSString stringWithFormat:@"%@.png", name];
+    NSString *fileName = [NSString stringWithFormat:@"%@.jpg", name];
 
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
@@ -32,7 +34,7 @@
         // Upload image data.  Remember to set the content type.
         S3PutObjectRequest *put = [[S3PutObjectRequest alloc] initWithKey:fileName
                                                                  inBucket:PICTURE_BUCKET];
-        put.contentType = @"image/png";
+        put.contentType = @"image/jpeg";
         put.data        = imageData;
 
         // Put the image data into the specified s3 bucket and object.
@@ -44,7 +46,6 @@
                 NSLog(@"Error: %@", putObjectResponse.error);
             } else {
                 NSLog(@"Upload OK!");
-                // UPLOAD OK!
             }
 
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
