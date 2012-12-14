@@ -19,7 +19,7 @@ Dependencies:
 * [requests](http://docs.python-requests.org/en/latest/)
 * [apiclient](http://code.google.com/p/google-api-python-client/)
 
-## BeerCaddy ##
+## Beerdex ##
 
 This directory contains the Xcode project for the iPhone app. Open the Xcode project and connect a provisioned device to run it. Unfortunately it will not run in the simulator because it requires the camera. Both the OpenCV2 and AWS iOS SDK framework directories must be linked (these are included in the git repo).
 
