@@ -24,7 +24,7 @@
     if (modelPath && vocabPath)
         bottler.load_with_bow([modelPath UTF8String], [vocabPath UTF8String]);
 
-    [_s3 refreshModel];
+//    [_s3 refreshModel];
 }
 
 - (void)didReceiveMemoryWarning

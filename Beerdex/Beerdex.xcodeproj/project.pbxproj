@@ -24,7 +24,7 @@
 		A1919C2C16615FBE00205609 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0316615FBE00205609 /* UIKit.framework */; };
 		A1919C2D16615FBE00205609 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1919C0516615FBE00205609 /* Foundation.framework */; };
 		A1919C3516615FBE00205609 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1919C3316615FBE00205609 /* InfoPlist.strings */; };
-		A1919C3816615FBE00205609 /* BeerCaddyTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1919C3716615FBE00205609 /* BeerCaddyTests.mm */; };
+		A1919C3816615FBE00205609 /* BeerdexTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1919C3716615FBE00205609 /* BeerdexTests.mm */; };
 		A1919C491661931700205609 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A1919C481661931700205609 /* MainViewController.mm */; };
 		A1919C4D1661AB0D00205609 /* BeerClassifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */; };
 		A1AE0EF91675D571003444B2 /* 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE0EF81675D571003444B2 /* 114x114.png */; };
@@ -37,11 +37,11 @@
 		A1F5E5D01675BDF500762907 /* bottles.model in Resources */ = {isa = PBXBuildFile; fileRef = A1F5E5CE1675BDF500762907 /* bottles.model */; };
 		A1F5E5D11675BDF500762907 /* bottles.vocab in Resources */ = {isa = PBXBuildFile; fileRef = A1F5E5CF1675BDF500762907 /* bottles.vocab */; };
 		A1FCAEAF166F5391002C2345 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1657DA41661DE7E009878CA /* opencv2.framework */; };
-		A1FCAEB2166F56DA002C2345 /* BeerCaddy-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */; };
+		A1FCAEB2166F56DA002C2345 /* Beerdex-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1919C0B16615FBE00205609 /* Beerdex-Info.plist */; };
 		A1FCAEB3166F56DA002C2345 /* overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1134ED016649B5B00378D26 /* overlay@2x.png */; };
 		A1FCAEB4166F56DA002C2345 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1919C0C16615FBE00205609 /* InfoPlist.strings */; };
 		A1FCAEB5166F56DA002C2345 /* main.m in Resources */ = {isa = PBXBuildFile; fileRef = A1919C0F16615FBE00205609 /* main.m */; };
-		A1FCAEB7166F56DA002C2345 /* BeerCaddy-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1116615FBE00205609 /* BeerCaddy-Prefix.pch */; };
+		A1FCAEB7166F56DA002C2345 /* Beerdex-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1116615FBE00205609 /* Beerdex-Prefix.pch */; };
 		A1FCAEB8166F56DA002C2345 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1516615FBE00205609 /* Default.png */; };
 		A1FCAEBA166F56DA002C2345 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1919C1916615FBE00205609 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
@@ -52,7 +52,7 @@
 			containerPortal = A1919BF616615FBE00205609 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A1919BFE16615FBE00205609;
-			remoteInfo = BeerCaddy;
+			remoteInfo = Beerdex;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -62,14 +62,14 @@
 		A165640E1675A0E8009EA1F4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A1657DA41661DE7E009878CA /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		A17160381667E5EB00A8687A /* AWSiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSiOSSDK.framework; path = "aws-ios-sdk-1.4.4/AWSiOSSDK.framework"; sourceTree = "<group>"; };
-		A1919BFF16615FBE00205609 /* BeerCaddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerCaddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1919BFF16615FBE00205609 /* Beerdex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beerdex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1919C0316615FBE00205609 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A1919C0516615FBE00205609 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A1919C0716615FBE00205609 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeerCaddy-Info.plist"; sourceTree = "<group>"; };
+		A1919C0B16615FBE00205609 /* Beerdex-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Beerdex-Info.plist"; sourceTree = "<group>"; };
 		A1919C0D16615FBE00205609 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A1919C0F16615FBE00205609 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A1919C1116615FBE00205609 /* BeerCaddy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BeerCaddy-Prefix.pch"; sourceTree = "<group>"; };
+		A1919C1116615FBE00205609 /* Beerdex-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Beerdex-Prefix.pch"; sourceTree = "<group>"; };
 		A1919C1216615FBE00205609 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A1919C1316615FBE00205609 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A1919C1516615FBE00205609 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -78,12 +78,12 @@
 		A1919C1E16615FBE00205609 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		A1919C2116615FBE00205609 /* TagUploadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagUploadViewController.h; sourceTree = "<group>"; };
 		A1919C2216615FBE00205609 /* TagUploadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagUploadViewController.m; sourceTree = "<group>"; };
-		A1919C2916615FBE00205609 /* BeerCaddyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerCaddyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1919C2916615FBE00205609 /* BeerdexTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerdexTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1919C2A16615FBE00205609 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		A1919C3216615FBE00205609 /* BeerCaddyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeerCaddyTests-Info.plist"; sourceTree = "<group>"; };
+		A1919C3216615FBE00205609 /* BeerdexTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BeerdexTests-Info.plist"; sourceTree = "<group>"; };
 		A1919C3416615FBE00205609 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A1919C3616615FBE00205609 /* BeerCaddyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeerCaddyTests.h; sourceTree = "<group>"; };
-		A1919C3716615FBE00205609 /* BeerCaddyTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BeerCaddyTests.mm; sourceTree = "<group>"; };
+		A1919C3616615FBE00205609 /* BeerdexTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeerdexTests.h; sourceTree = "<group>"; };
+		A1919C3716615FBE00205609 /* BeerdexTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BeerdexTests.mm; sourceTree = "<group>"; };
 		A1919C46166176B300205609 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A1919C481661931700205609 /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
 		A1919C4B1661AB0D00205609 /* BeerClassifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeerClassifier.cpp; sourceTree = "<group>"; };
@@ -128,8 +128,8 @@
 		A1919BF416615FBE00205609 = {
 			isa = PBXGroup;
 			children = (
-				A1919C0916615FBE00205609 /* BeerCaddy */,
-				A1919C3016615FBE00205609 /* BeerCaddyTests */,
+				A1919C0916615FBE00205609 /* Beerdex */,
+				A1919C3016615FBE00205609 /* BeerdexTests */,
 				A1919C0216615FBE00205609 /* Frameworks */,
 				A1919C0016615FBE00205609 /* Products */,
 			);
@@ -138,8 +138,8 @@
 		A1919C0016615FBE00205609 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1919BFF16615FBE00205609 /* BeerCaddy.app */,
-				A1919C2916615FBE00205609 /* BeerCaddyTests.octest */,
+				A1919BFF16615FBE00205609 /* Beerdex.app */,
+				A1919C2916615FBE00205609 /* BeerdexTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A1919C0916615FBE00205609 /* BeerCaddy */ = {
+		A1919C0916615FBE00205609 /* Beerdex */ = {
 			isa = PBXGroup;
 			children = (
 				A1919C1216615FBE00205609 /* AppDelegate.h */,
@@ -175,7 +175,8 @@
 				A13C810A1662C75200624C82 /* Beers.h */,
 				A1919C0A16615FBE00205609 /* Supporting Files */,
 			);
-			path = BeerCaddy;
+			name = Beerdex;
+			path = Beerdex;
 			sourceTree = "<group>";
 		};
 		A1919C0A16615FBE00205609 /* Supporting Files */ = {
@@ -185,11 +186,11 @@
 				A1AE0EF81675D571003444B2 /* 114x114.png */,
 				A1F5E5CE1675BDF500762907 /* bottles.model */,
 				A1F5E5CF1675BDF500762907 /* bottles.vocab */,
-				A1919C0B16615FBE00205609 /* BeerCaddy-Info.plist */,
+				A1919C0B16615FBE00205609 /* Beerdex-Info.plist */,
 				A1134ED016649B5B00378D26 /* overlay@2x.png */,
 				A1919C0C16615FBE00205609 /* InfoPlist.strings */,
 				A1919C0F16615FBE00205609 /* main.m */,
-				A1919C1116615FBE00205609 /* BeerCaddy-Prefix.pch */,
+				A1919C1116615FBE00205609 /* Beerdex-Prefix.pch */,
 				A1919C1516615FBE00205609 /* Default.png */,
 				A165640E1675A0E8009EA1F4 /* Default@2x.png */,
 				A1919C1916615FBE00205609 /* Default-568h@2x.png */,
@@ -198,20 +199,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A1919C3016615FBE00205609 /* BeerCaddyTests */ = {
+		A1919C3016615FBE00205609 /* BeerdexTests */ = {
 			isa = PBXGroup;
 			children = (
-				A1919C3616615FBE00205609 /* BeerCaddyTests.h */,
-				A1919C3716615FBE00205609 /* BeerCaddyTests.mm */,
+				A1919C3616615FBE00205609 /* BeerdexTests.h */,
+				A1919C3716615FBE00205609 /* BeerdexTests.mm */,
 				A1919C3116615FBE00205609 /* Supporting Files */,
 			);
-			path = BeerCaddyTests;
+			path = BeerdexTests;
 			sourceTree = "<group>";
 		};
 		A1919C3116615FBE00205609 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A1919C3216615FBE00205609 /* BeerCaddyTests-Info.plist */,
+				A1919C3216615FBE00205609 /* BeerdexTests-Info.plist */,
 				A1919C3316615FBE00205609 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -220,9 +221,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A1919BFE16615FBE00205609 /* BeerCaddy */ = {
+		A1919BFE16615FBE00205609 /* Beerdex */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1919C3B16615FBE00205609 /* Build configuration list for PBXNativeTarget "BeerCaddy" */;
+			buildConfigurationList = A1919C3B16615FBE00205609 /* Build configuration list for PBXNativeTarget "Beerdex" */;
 			buildPhases = (
 				A1919BFB16615FBE00205609 /* Sources */,
 				A1919BFC16615FBE00205609 /* Frameworks */,
@@ -232,14 +233,14 @@
 			);
 			dependencies = (
 			);
-			name = BeerCaddy;
-			productName = BeerCaddy;
-			productReference = A1919BFF16615FBE00205609 /* BeerCaddy.app */;
+			name = Beerdex;
+			productName = Beerdex;
+			productReference = A1919BFF16615FBE00205609 /* Beerdex.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A1919C2816615FBE00205609 /* BeerCaddyTests */ = {
+		A1919C2816615FBE00205609 /* BeerdexTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1919C3E16615FBE00205609 /* Build configuration list for PBXNativeTarget "BeerCaddyTests" */;
+			buildConfigurationList = A1919C3E16615FBE00205609 /* Build configuration list for PBXNativeTarget "BeerdexTests" */;
 			buildPhases = (
 				A1919C2416615FBE00205609 /* Sources */,
 				A1919C2516615FBE00205609 /* Frameworks */,
@@ -251,9 +252,9 @@
 			dependencies = (
 				A1919C2F16615FBE00205609 /* PBXTargetDependency */,
 			);
-			name = BeerCaddyTests;
-			productName = BeerCaddyTests;
-			productReference = A1919C2916615FBE00205609 /* BeerCaddyTests.octest */;
+			name = BeerdexTests;
+			productName = BeerdexTests;
+			productReference = A1919C2916615FBE00205609 /* BeerdexTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -265,7 +266,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Peter Sugihara";
 			};
-			buildConfigurationList = A1919BF916615FBE00205609 /* Build configuration list for PBXProject "BeerCaddy" */;
+			buildConfigurationList = A1919BF916615FBE00205609 /* Build configuration list for PBXProject "Beerdex" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -277,8 +278,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A1919BFE16615FBE00205609 /* BeerCaddy */,
-				A1919C2816615FBE00205609 /* BeerCaddyTests */,
+				A1919BFE16615FBE00205609 /* Beerdex */,
+				A1919C2816615FBE00205609 /* BeerdexTests */,
 			);
 		};
 /* End PBXProject section */
@@ -306,11 +307,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FCAEB2166F56DA002C2345 /* BeerCaddy-Info.plist in Resources */,
+				A1FCAEB2166F56DA002C2345 /* Beerdex-Info.plist in Resources */,
 				A1FCAEB3166F56DA002C2345 /* overlay@2x.png in Resources */,
 				A1FCAEB4166F56DA002C2345 /* InfoPlist.strings in Resources */,
 				A1FCAEB5166F56DA002C2345 /* main.m in Resources */,
-				A1FCAEB7166F56DA002C2345 /* BeerCaddy-Prefix.pch in Resources */,
+				A1FCAEB7166F56DA002C2345 /* Beerdex-Prefix.pch in Resources */,
 				A1FCAEB8166F56DA002C2345 /* Default.png in Resources */,
 				A1FCAEBA166F56DA002C2345 /* Default-568h@2x.png in Resources */,
 				A1919C3516615FBE00205609 /* InfoPlist.strings in Resources */,
@@ -353,7 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1919C3816615FBE00205609 /* BeerCaddyTests.mm in Sources */,
+				A1919C3816615FBE00205609 /* BeerdexTests.mm in Sources */,
 				A1F074BB1671303200CECB4E /* S3DAO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +364,7 @@
 /* Begin PBXTargetDependency section */
 		A1919C2F16615FBE00205609 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A1919BFE16615FBE00205609 /* BeerCaddy */;
+			target = A1919BFE16615FBE00205609 /* Beerdex */;
 			targetProxy = A1919C2E16615FBE00205609 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -455,10 +456,10 @@
 					"\"$(SRCROOT)/aws-ios-sdk-1.4.4\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
-				INFOPLIST_FILE = "BeerCaddy/BeerCaddy-Info.plist";
+				GCC_PREFIX_HEADER = "Beerdex/Beerdex-Prefix.pch";
+				INFOPLIST_FILE = "Beerdex/Beerdex-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beerdex;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -472,10 +473,10 @@
 					"\"$(SRCROOT)/aws-ios-sdk-1.4.4\"/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
-				INFOPLIST_FILE = "BeerCaddy/BeerCaddy-Info.plist";
+				GCC_PREFIX_HEADER = "Beerdex/Beerdex-Prefix.pch";
+				INFOPLIST_FILE = "Beerdex/Beerdex-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Beerdex;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -483,16 +484,16 @@
 		A1919C3F16615FBE00205609 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeerCaddy.app/BeerCaddy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Beerdex.app/Beerdex";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
-				INFOPLIST_FILE = "BeerCaddyTests/BeerCaddyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Beerdex/Beerdex-Prefix.pch";
+				INFOPLIST_FILE = "BeerdexTests/BeerdexTests-Info.plist";
+				PRODUCT_NAME = BeerdexTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -501,16 +502,16 @@
 		A1919C4016615FBE00205609 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BeerCaddy.app/BeerCaddy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Beerdex.app/Beerdex";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BeerCaddy/BeerCaddy-Prefix.pch";
-				INFOPLIST_FILE = "BeerCaddyTests/BeerCaddyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Beerdex/Beerdex-Prefix.pch";
+				INFOPLIST_FILE = "BeerdexTests/BeerdexTests-Info.plist";
+				PRODUCT_NAME = BeerdexTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -519,7 +520,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1919BF916615FBE00205609 /* Build configuration list for PBXProject "BeerCaddy" */ = {
+		A1919BF916615FBE00205609 /* Build configuration list for PBXProject "Beerdex" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1919C3916615FBE00205609 /* Debug */,
@@ -528,7 +529,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1919C3B16615FBE00205609 /* Build configuration list for PBXNativeTarget "BeerCaddy" */ = {
+		A1919C3B16615FBE00205609 /* Build configuration list for PBXNativeTarget "Beerdex" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1919C3C16615FBE00205609 /* Debug */,
@@ -537,7 +538,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1919C3E16615FBE00205609 /* Build configuration list for PBXNativeTarget "BeerCaddyTests" */ = {
+		A1919C3E16615FBE00205609 /* Build configuration list for PBXNativeTarget "BeerdexTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A1919C3F16615FBE00205609 /* Debug */,

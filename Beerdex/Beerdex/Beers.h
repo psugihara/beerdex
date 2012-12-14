@@ -1,13 +1,13 @@
 //
 //  Beers.h
-//  BeerCaddy
+//  Beerdex
 //
 //  Created by Peter Sugihara on 11/25/12.
 //  Copyright (c) 2012 Peter Sugihara. All rights reserved.
 //
 
-#ifndef BeerCaddy_Beers_h
-#define BeerCaddy_Beers_h
+#ifndef Beerdex_Beers_h
+#define Beerdex_Beers_h
 
 enum beers {
     BUD_LIGHT,

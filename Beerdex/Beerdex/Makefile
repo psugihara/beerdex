@@ -72,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/petersugihara/Documents/Code/beeridex && $(CMAKE_COMMAND) -E cmake_progress_start /Users/petersugihara/Documents/Code/beeridex/CMakeFiles /Users/petersugihara/Documents/Code/beeridex/BeerCaddy/BeerCaddy/CMakeFiles/progress.marks
-	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 BeerCaddy/BeerCaddy/all
+	cd /Users/petersugihara/Documents/Code/beeridex && $(CMAKE_COMMAND) -E cmake_progress_start /Users/petersugihara/Documents/Code/beeridex/CMakeFiles /Users/petersugihara/Documents/Code/beeridex/Beerdex/Beerdex/CMakeFiles/progress.marks
+	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 Beerdex/Beerdex/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/petersugihara/Documents/Code/beeridex/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 BeerCaddy/BeerCaddy/clean
+	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 Beerdex/Beerdex/clean
 .PHONY : clean
 
 # The main clean target
@@ -88,12 +88,12 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 BeerCaddy/BeerCaddy/preinstall
+	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 Beerdex/Beerdex/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 BeerCaddy/BeerCaddy/preinstall
+	cd /Users/petersugihara/Documents/Code/beeridex && $(MAKE) -f CMakeFiles/Makefile2 Beerdex/Beerdex/preinstall
 .PHONY : preinstall/fast
 
 # clear depends

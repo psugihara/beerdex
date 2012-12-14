@@ -7,8 +7,8 @@
 //  Copyright (c) 2012 Peter Sugihara. All rights reserved.
 //
 
-#ifndef __BeerCaddy__BeerClassifier__
-#define __BeerCaddy__BeerClassifier__
+#ifndef __Beerdex__BeerClassifier__
+#define __Beerdex__BeerClassifier__
 
 #include <iostream>
 #include <vector>
@@ -44,4 +44,4 @@ public:
 	cv::Mat extract_desc_bow(std::vector<cv::Mat> &train_imgs, cv::Mat &labels);
 };
 
-#endif /* defined(__BeerCaddy__BeerClassifier__) */
+#endif /* defined(__Beerdex__BeerClassifier__) */
