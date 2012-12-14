@@ -35,4 +35,4 @@ Building:
 	
 Usage:
 
-	$ trainer <image-root> [model-output vocab-output]" << endl;
+	$ trainer <image-root> [model-output vocab-output]
